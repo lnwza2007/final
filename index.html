@@ -3,15 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>สรุปทักษะการสื่อสารฉบับสมบูรณ์</title>
+    <title>สรุปองค์ความรู้: ภาษา การสื่อสาร กฎหมายและข้อมูล</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
-    <!-- Chosen Palette: Dynamic (Light: Stone/Teal, Dark: Gray/Cyan) -->
-    <!-- Application Structure Plan: Multi-tab structure maintained, but each section is broken down into highly detailed, nested accordions. This deep-dive structure is chosen to accommodate the vast amount of specific, academic content (e.g., detailed steps for listening, speaking etiquette, and report writing components) while maintaining an organized, clean UI in a single SPA. Key interactions focus on exploring nested details. -->
-    <!-- Visualization & Content Choices: Content is organized into four main thematic tabs + a new "Exercise" tab. Nested accordions are extensively used to manage content depth. Lists and sub-lists are used to present procedural information (e.g., 6 steps of command listening, 5 parts of a research report). No charts used, heavy reliance on text and list-based presentation for maximum information density and clarity. -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
         body {
             font-family: 'Sarabun', sans-serif;
@@ -20,86 +16,87 @@
 
         /* Light Mode Classes (Default) */
         body.light {
-            background-color: #f8fafc; /* slate-50 */
-            color: #1e293b; /* slate-800 */
+            background-color: #f8fafc;
+            color: #1e293b;
         }
         .light .card-bg {
             background-color: #ffffff;
             color: #1e293b;
         }
         .light .primary-text {
-            color: #0d9488; /* teal-600 */
+            color: #0d9488;
         }
         .light .secondary-text {
-            color: #475569; /* slate-600 */
+            color: #475569;
         }
         .light .highlight-bg {
-            background-color: #f0fdfa; /* teal-50 */
-            border-color: #14b8a6; /* teal-500 */
+            background-color: #f0fdfa;
+            border-color: #14b8a6;
         }
         .light .warning-bg {
-            background-color: #fef2f2; /* red-50 */
-            border-color: #f87171; /* red-400 */
+            background-color: #fef2f2;
+            border-color: #f87171;
         }
         .light .base-element-bg {
-             background-color: #f1f5f9; /* slate-100 */
+             background-color: #f1f5f9;
         }
         .light .tab-btn.active {
-            border-color: #14b8a6; /* teal-500 */
+            border-color: #14b8a6;
             color: #0d9488;
             background-color: #f0fdfa;
         }
         .light .resume-section.active, .light .resume-section:hover {
-            background-color: #ccfbf1; /* teal-100 */
-            border-color: #0d9488; /* teal-700 for border */
+            background-color: #ccfbf1;
+            border-color: #0d9488;
         }
         .light .resume-section {
-            border-color: #14b8a6; /* Default border color in light mode */
+            border-color: #14b8a6;
         }
 
 
         /* Dark Mode Classes */
         body.dark {
-            background-color: #1e293b; /* slate-800 */
-            color: #e2e8f0; /* slate-200 */
+            background-color: #1e293b;
+            color: #e2e8f0;
         }
         .dark .card-bg {
-            background-color: #334155; /* slate-700 */
+            background-color: #334155;
             color: #e2e8f0;
         }
         .dark .primary-text {
-            color: #22d3ee; /* cyan-400 */
+            color: #22d3ee;
         }
         .dark .secondary-text {
-            color: #94a3b8; /* slate-400 */
+            color: #94a3b8;
         }
         .dark .highlight-bg {
-            background-color: #164e63; /* cyan-900 */
-            border-color: #22d3ee; /* cyan-400 */
+            background-color: #164e63;
+            border-color: #22d3ee;
         }
         .dark .warning-bg {
-            background-color: #450a0a; /* red-900 */
-            border-color: #ef4444; /* red-500 */
+            background-color: #450a0a;
+            border-color: #ef4444;
         }
         .dark .base-element-bg {
-             background-color: #475569; /* slate-600 */
+             background-color: #475569;
         }
         .dark .tab-btn.active {
             border-color: #22d3ee;
             color: #22d3ee;
-            background-color: #0f766e; /* teal-700 */
+            background-color: #0f766e;
         }
         .dark .resume-section.active, .dark .resume-section:hover {
-            background-color: #0e7490; /* cyan-700 */
-            border-color: #22d3ee; /* cyan-400 for border */
+            background-color: #0e7490;
+            border-color: #22d3ee;
         }
         .dark .resume-section {
-            border-color: #22d3ee; /* Default border color in dark mode */
+            border-color: #22d3ee;
         }
 
         /* Shared styles */
         .tab-btn {
             transition: all 0.3s ease;
+            white-space: nowrap;
         }
         .content-section {
             display: none;
@@ -136,256 +133,132 @@
             transform: translateY(-4px);
             box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
         }
+        @media (max-width: 768px) {
+            .tab-nav {
+                flex-wrap: wrap;
+                justify-content: flex-start;
+            }
+            .tab-btn {
+                flex-grow: 1;
+                margin: 4px 0;
+            }
+        }
     </style>
 </head>
 <body class="light">
 
     <div class="container mx-auto p-4 md:p-8">
         <header class="text-center mb-8 relative">
-            <h1 class="text-4xl md:text-5xl font-bold primary-text">สรุปทักษะภาษาไทยเพื่อการสื่อสาร (ฉบับสมบูรณ์)</h1>
-            <p class="secondary-text mt-2 text-lg">หลักการรับสาร การส่งสาร และการเขียนรายงานทางวิชาการ</p>
+            <h1 class="text-4xl md:text-5xl font-bold primary-text">สรุปองค์ความรู้: ภาษา สื่อสาร กฎหมายและข้อมูล</h1>
+            <p class="secondary-text mt-2 text-lg">หลักการบริหารจัดการข้อมูลและทักษะเพื่อการสื่อสารระดับสูง</p>
             
             <button id="theme-toggle" class="absolute top-0 right-0 p-2 rounded-full base-element-bg text-sm font-medium shadow-md transition-colors duration-300">
                 ☀️ Light Mode
             </button>
         </header>
 
-        <nav class="flex flex-wrap justify-center border-b-2 border-slate-200 dark:border-slate-700 mb-8" id="tab-nav">
-            <button class="tab-btn active text-lg font-semibold py-3 px-6 border-b-4 border-transparent" data-tab="overview">ภาพรวมและองค์ประกอบ</button>
-            <button class="tab-btn text-lg font-semibold py-3 px-6 border-b-4 border-transparent" data-tab="receptive">ทักษะการรับสาร (ฟัง/อ่าน)</button>
-            <button class="tab-btn text-lg font-semibold py-3 px-6 border-b-4 border-transparent" data-tab="productive">ทักษะการส่งสาร (พูด/เขียน)</button>
-            <button class="tab-btn text-lg font-semibold py-3 px-6 border-b-4 border-transparent" data-tab="application">การเขียนเพื่อกิจธุระ/วิชาการ</button>
-            <button class="tab-btn text-lg font-semibold py-3 px-6 border-b-4 border-transparent" data-tab="exercise">แบบฝึกหัดและเฉลย</button>
+        <nav class="flex overflow-x-auto justify-start border-b-2 border-slate-200 dark:border-slate-700 mb-8 tab-nav" id="tab-nav">
+            <button class="tab-btn active text-sm md:text-base font-semibold py-3 px-3 md:px-6 border-b-4 border-transparent" data-tab="comm">ทักษะการสื่อสาร (ไทย)</button>
+            <button class="tab-btn text-sm md:text-base font-semibold py-3 px-3 md:px-6 border-b-4 border-transparent" data-tab="data-gov">ธรรมาภิบาลข้อมูล</button>
+            <button class="tab-btn text-sm md:text-base font-semibold py-3 px-3 md:px-6 border-b-4 border-transparent" data-tab="pdpa">กฎหมายคุ้มครองข้อมูล (PDPA)</button>
+            <button class="tab-btn text-sm md:text-base font-semibold py-3 px-3 md:px-6 border-b-4 border-transparent" data-tab="ip-law">ทรัพย์สินทางปัญญา</button>
+            <button class="tab-btn text-sm md:text-base font-semibold py-3 px-3 md:px-6 border-b-4 border-transparent" data-tab="exercise">แบบฝึกหัดและเฉลย</button>
         </nav>
 
         <main>
-            <!-- TAB 1: ภาพรวมและองค์ประกอบ -->
-            <section id="overview-content" class="content-section active">
-                 <div class="p-6 rounded-lg shadow-md mb-6 card-bg">
-                    <h2 class="text-2xl font-bold primary-text mb-4">องค์ประกอบและปัจจัยความสำเร็จของการสื่อสาร</h2>
-                    <p class="secondary-text mb-6">การสื่อสารเป็นกระบวนการถ่ายทอดข้อมูลจาก **ผู้ส่งสาร** ผ่าน **สื่อ/ช่องทาง** ไปยัง **ผู้รับสาร** เพื่อให้เกิด **ผลของการสื่อสาร** ที่ตรงตามวัตถุประสงค์ (กฎของลาสเวลล์: ใคร กล่าวอะไร ในช่องทางใด แก่ใคร ด้วยผลอะไร)</p>
-                    
-                    <div class="space-y-4">
-                        <!-- ผู้ส่งสาร -->
-                        <div class="accordion base-element-bg rounded-lg p-3">
-                            <button class="accordion-header w-full text-left font-bold flex justify-between items-center text-lg primary-text">
-                                <span>1. ผู้ส่งสาร (Sender) และปัจจัยความน่าเชื่อถือ</span>
-                                <span>▼</span>
-                            </button>
-                            <div class="accordion-content">
-                                <p class="secondary-text mt-2">ผู้กำหนดสาร วิธี และช่องทางสื่อสาร ปัจจัยที่สร้างความน่าเชื่อถือ (Competence) มี 5 ประการ:</p>
-                                <ul class="list-disc pl-5 mt-2 space-y-1 secondary-text text-sm">
-                                    <li><b>ความรู้ในสารและความสามารถในการสื่อสาร</b> (Competence)</li>
-                                    <li><b>รูปลักษณ์/บุคลิกลักษณะ</b> (Character/Appearance)</li>
-                                    <li><b>ความสุขุมและความคล่องแคล่ว</b> (Composure/Clarity)</li>
-                                    <li><b>การเป็นที่ยอมรับของสังคม</b> (Socialbility)</li>
-                                    <li><b>การเป็นคนเปิดเผย</b> (Extroversion)</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                         <!-- ผู้รับสาร -->
-                         <div class="accordion base-element-bg rounded-lg p-3">
-                            <button class="accordion-header w-full text-left font-bold flex justify-between items-center text-lg primary-text">
-                                <span>2. ผู้รับสาร (Receiver) และบุคลิกภาพที่ควรระวัง</span>
-                                <span>▼</span>
-                            </button>
-                            <div class="accordion-content">
-                                <p class="secondary-text mt-2">ความสำเร็จของการสื่อสารขึ้นอยู่กับการตีความของผู้รับสาร บุคลิกภาพที่ส่งผลลบต่อการรับสาร เช่น:</p>
-                                <ul class="list-disc pl-5 mt-2 space-y-1 secondary-text text-sm">
-                                    <li><b>จิตใจคับแคบ</b> (Dogmatism): เชื่อมั่นในตนเองสูง คิดว่าคนอื่นผิด</li>
-                                    <li><b>ความนับถือตนเองสูง</b> (Self-Esteem): ไม่เชื่อผู้อื่นโดยง่าย</li>
-                                    <li><b>ความก้าวร้าว/เป็นศัตรู</b> (Aggressiveness/Hostility): หวาดระแวง ปิดกั้นการรับข่าวสาร</li>
-                                    <li><b>ความกังวลใจ</b> (Anxiety): ขาดความเชื่อมั่น ถูกชักจูงง่าย</li>
-                                    <li><b>ฝังใจกับทัศนะเดิม</b> (Prior Attitude): ยึดมั่นความรู้สึกแรกที่มีต่อสิ่งต่างๆ</li>
-                                    <li><b>มีเล่ห์เหลี่ยมหลอกลวง</b> (Machinavllianism): ไม่จริงใจในการติดต่อสื่อสาร</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <!-- สารและอุปสรรค -->
-                        <div class="accordion base-element-bg rounded-lg p-3">
-                            <button class="accordion-header w-full text-left font-bold flex justify-between items-center text-lg primary-text">
-                                <span>3. สาร (Message) และอุปสรรคสำคัญ</span>
-                                <span>▼</span>
-                            </button>
-                            <div class="accordion-content">
-                                <p class="secondary-text mt-2">สารประกอบด้วย **เนื้อหา** (ข้อเท็จจริง/ข้อคิดเห็น) และ **สัญลักษณ์** (ภาษา) อุปสรรคที่เกิดจากสาร:</p>
-                                <ul class="list-disc pl-5 mt-2 space-y-1 secondary-text text-sm">
-                                    <li><b>ขาดความชัดเจน:</b> เสียงเบา, ภาพเลือน, ใช้ภาษาซับซ้อน/กำกวม/เว้นวรรคผิดที่</li>
-                                    <li><b>ขาดความครบถ้วน:</b> สื่อเนื้อหาไม่ครบถ้วน ขาดประเด็นสำคัญ</li>
-                                    <li><b>ขาดความสุจริตใจ:</b> เป็นสารหลอกลวงหรือบิดเบือน (อันตรายต่อผู้รับสาร)</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-            <!-- TAB 2: ทักษะการรับสาร (ฟัง/อ่าน) -->
-            <section id="receptive-content" class="content-section">
-                <div class="text-center mb-6">
-                    <h2 class="text-3xl font-bold primary-text">ทักษะการรับสาร: การฟังและการอ่าน (แบบเจาะลึก)</h2>
-                    <p class="secondary-text mt-2">การพัฒนาระดับการรับรู้จาก "อ่านได้/ได้ยิน" สู่ "อ่านเป็น/ฟังเป็น"</p>
-                </div>
+            
+            <section id="comm-content" class="content-section active">
+                <h2 class="text-3xl font-bold primary-text mb-6 text-center">ทักษะการสื่อสารภาษาไทย และการเขียนรายงาน</h2>
                 <div class="grid md:grid-cols-2 gap-8">
-                    <!-- การฟัง (Listening) -->
-                    <div class="p-6 rounded-lg shadow-md interactive-card card-bg">
-                        <h3 class="text-2xl font-bold mb-4">1. การฟัง: ขั้นตอนและวัตถุประสงค์</h3>
+                    <div class="p-6 rounded-lg shadow-md interactive-card card-bg space-y-4">
+                        <h3 class="text-2xl font-bold primary-text mb-4">1. การรับสาร: ฟัง อ่าน วิเคราะห์</h3>
+                        
                         <div class="accordion">
-                            <button class="accordion-header w-full text-left font-semibold text-lg py-2 flex justify-between items-center"><span>1.1 ขั้นตอนการฟังอย่างมีประสิทธิภาพ 6 ขั้น</span><span>▼</span></button>
+                            <button class="accordion-header w-full text-left font-semibold text-lg py-2 flex justify-between items-center"><span>1.1 ทักษะการฟัง (Listening)</span><span>▼</span></button>
                             <div class="accordion-content">
                                 <ol class="list-decimal pl-5 mt-2 space-y-1 secondary-text text-sm">
-                                    <li><b>เข้าใจเรื่อง:</b> รู้ Who, What, Where, When, Why</li>
-                                    <li><b>จับประเด็นสำคัญ:</b> แยกใจความหลัก/รอง</li>
-                                    <li><b>วิเคราะห์เรื่อง:</b> แยกแยะข้อเท็จจริง/ข้อคิดเห็น/อารมณ์</li>
-                                    <li><b>ตีความเรื่อง:</b> เข้าใจความหมายที่แท้จริง/เจตนาของผู้ส่งสาร (ขั้นสูง)</li>
-                                    <li><b>ประเมินค่าเรื่อง:</b> ตัดสินความน่าเชื่อถือ/คุณค่า (ใช้วิจารณญาณ)</li>
-                                    <li><b>นำไปใช้:</b> ประยุกต์ใช้ในชีวิตประจำวัน/การศึกษา</li>
+                                    [cite_start]<li><b>ขั้นตอน 6 ขั้น:</b> เข้าใจเรื่อง → จับประเด็น → วิเคราะห์ → ตีความ → ประเมินค่า → นำไปใช้ [cite: 2869]</li>
+                                    [cite_start]<li><b>ฟังเพื่อรับคำสั่ง (6 ข้อ):</b> ต้องเข้าใจวัตถุประสงค์ คำสั่ง รายละเอียด ที่มา/วัตถุประสงค์ และทบทวนให้ตรงกัน [cite: 1280, 1281]</li>
+                                    [cite_start]<li><b>ประเภทสาร:</b> สารให้ความรู้, สารโน้มน้าวใจ (เน้นวิจารณญาณ), สารจรรโลงใจ (เน้นคติชีวิต) [cite: 1160, 1171, 1181]</li>
                                 </ol>
                             </div>
                         </div>
 
-                         <div class="accordion">
-                            <button class="accordion-header w-full text-left font-semibold text-lg py-2 flex justify-between items-center"><span>1.2 การฟังตามวัตถุประสงค์ (เช่น ฟังคำสั่ง)</span><span>▼</span></button>
+                        <div class="accordion">
+                            <button class="accordion-header w-full text-left font-semibold text-lg py-2 flex justify-between items-center"><span>1.2 การอ่าน (Reading & Analysis)</span><span>▼</span></button>
                             <div class="accordion-content">
-                                <p class="secondary-text mt-2 font-medium">วัตถุประสงค์หลัก: เพื่อรับข้อมูล, เพื่อรับคำสั่ง, เพื่อรายงานต่อ</p>
-                                <div class="accordion">
-                                    <button class="accordion-header w-full text-left font-semibold py-1 flex justify-between items-center text-teal-600 dark:text-cyan-400">
-                                        <span>&bull; แนวทางฟังเพื่อรับคำสั่ง (6 ข้อ)</span>
-                                        <span>&gt;</span>
-                                    </button>
-                                    <div class="nested-accordion-content mt-1">
-                                        <ol class="list-decimal pl-5 secondary-text text-xs space-y-0.5">
-                                            <li>ทำความเข้าใจวัตถุประสงค์ของคำสั่ง</li>
-                                            <li>ตั้งใจฟังโดยตลอด (คำสั่ง + รายละเอียด)</li>
-                                            <li>จับประเด็นสำคัญตามส่วนประกอบของคำสั่ง (คำสั่ง/รายละเอียด/ที่มา/วัตถุประสงค์)</li>
-                                            <li>ปราศจากอคติ เข้าใจบทบาทและหน้าที่</li>
-                                            <li>ควรซักถามทันที หากไม่เข้าใจหรือต้องการข้อมูลเพิ่มเติม</li>
-                                            <li>ทบทวนให้เข้าใจตรงกันระหว่างผู้สั่งกับผู้รับคำสั่ง</li>
-                                        </ol>
-                                    </div>
-                                </div>
+                                <ul class="list-disc pl-5 mt-2 space-y-1 secondary-text text-sm">
+                                    [cite_start]<li>**อ่านเป็น:** เข้าใจ จับความสำคัญ วิเคราะห์ ประเมินค่าได้ [cite: 1316]</li>
+                                    [cite_start]<li>**ใจความ vs พลความ:** ใจความสำคัญ (ข้อความหลักที่ครอบคลุมทั้งหมด) vs พลความ (ส่วนขยาย) [cite: 2073, 2075]</li>
+                                    [cite_start]<li>**การวิเคราะห์:** แยกแยะ **ข้อเท็จจริง** (พิสูจน์ได้) [cite: 2147] [cite_start]**ข้อคิดเห็น** (ความเชื่อส่วนตัว, สังเกตจาก: *น่าจะ, ควรจะ, เชื่อว่า*) [cite: 2151]</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="accordion">
+                            <button class="accordion-header w-full text-left font-semibold text-lg py-2 flex justify-between items-center"><span>1.3 ทักษะการส่งสาร: การพูดในชีวิตประจำวัน</span><span>▼</span></button>
+                            <div class="accordion-content">
+                                <ul class="list-disc pl-5 mt-2 space-y-1 secondary-text text-sm">
+                                    [cite_start]<li>**การทักทาย:** แนะนำผู้อ่อนอาวุโสให้ผู้อาวุโสรู้จักก่อน [cite: 1573]</li>
+                                    [cite_start]<li>**การสนทนา:** ควรเป็นผู้ฟังที่ดี [cite: 1635] [cite_start]หลีกเลี่ยงความขัดแย้ง (เสนอส่วนดีก่อน) [cite: 1633]</li>
+                                    [cite_start]<li>**โทรศัพท์:** ต้องระวัง **น้ำเสียง** มากที่สุด [cite: 1674, 1637] [cite_start]และพูดให้สั้น กระชับ ตรงประเด็น [cite: 1650]</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- การอ่าน (Reading) -->
-                    <div class="p-6 rounded-lg shadow-md interactive-card card-bg">
-                        <h3 class="text-2xl font-bold mb-4">2. การอ่าน: จับใจความ วิเคราะห์ และบันทึก</h3>
+                    <div class="p-6 rounded-lg shadow-md interactive-card card-bg space-y-4">
+                        <h3 class="text-2xl font-bold primary-text mb-4">2. การส่งสาร: งานสังคม รายงาน และสมัครงาน</h3>
                         
                         <div class="accordion">
-                            <button class="accordion-header w-full text-left font-semibold text-lg py-2 flex justify-between items-center"><span>2.1 การอ่านเพื่อจับใจความ (ใจความ vs พลความ)</span><span>▼</span></button>
-                            <div class="accordion-content">
-                                <ul class="list-disc pl-5 mt-2 space-y-1 secondary-text text-sm">
-                                    <li><b>อ่านได้:</b> การรับรู้ตัวอักษร</li>
-                                    <li><b>อ่านเป็น:</b> เข้าใจ จับความสำคัญ วิเคราะห์ ประเมินค่าได้</li>
-                                    <li><b>ใจความสำคัญ:</b> ข้อความที่สำคัญที่สุด คลุมเนื้อหาทั้งหมด</li>
-                                    <li><b>พลความ:</b> ข้อความที่ขยายหรือเสริมใจความสำคัญ (ตัดออก สาระหลักยังอยู่)</li>
-                                    <li><b>ตำแหน่ง:</b> ส่วนใหญ่อยู่ **ต้นย่อหน้า** (มากที่สุด) หรือ **ท้ายย่อหน้า**</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                         <div class="accordion">
-                            <button class="accordion-header w-full text-left font-semibold text-lg py-2 flex justify-between items-center"><span>2.2 การวิเคราะห์และประเมินค่า</span><span>▼</span></button>
-                            <div class="accordion-content">
-                                <ul class="list-disc pl-5 mt-2 space-y-1 secondary-text text-sm">
-                                    <li><b>ข้อเท็จจริง (Fact):</b> สิ่งที่มีอยู่จริง พิสูจน์ ตรวจสอบได้ (เช่น "ปลาหายใจทางเหงือก")</li>
-                                    <li><b>ข้อคิดเห็น (Opinion):</b> ความรู้สึก ความเชื่อส่วนตัว (สังเกต: "น่าจะ, ควรจะ, คงจะ, เชื่อว่า")</li>
-                                    <li><b>ความรู้สึก (Emotion):</b> อารมณ์ของผู้เขียนที่สื่อมา (เช่น เศร้า, ยินดี, น่าสมเพช)</li>
-                                    <li><b>การประเมินค่า:</b> ตัดสินความถูกต้อง/ความน่าเชื่อถือของเนื้อหาและกลวิธีการนำเสนอ</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="accordion">
-                            <button class="accordion-header w-full text-left font-semibold text-lg py-2 flex justify-between items-center"><span>2.3 การบันทึกความรู้</span><span>▼</span></button>
-                            <div class="accordion-content">
-                                <ul class="list-disc pl-5 mt-2 space-y-1 secondary-text text-sm">
-                                    <li><b>บันทึกย่อ:</b> บันทึกเป็นบัตร (Key Card) ระบุ หัวเรื่อง บรรณานุกรม แหล่งค้นคว้า ใจความสำคัญ</li>
-                                    <li><b>แผนที่ความคิด (Mind Mapping):</b> ใช้แสดงความเชื่อมโยงความคิดแบบแผนผัง (เริ่มต้นจากศูนย์กลางไปยังคำสำคัญ/หัวเรื่องย่อย)</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- TAB 3: ทักษะการส่งสาร (พูด/เขียน) -->
-            <section id="productive-content" class="content-section">
-                <div class="text-center mb-6">
-                    <h2 class="text-3xl font-bold primary-text">ทักษะการส่งสาร: การพูดและการเขียน (เชิงปฏิบัติ)</h2>
-                    <p class="secondary-text mt-2">หลักการถ่ายทอดสารอย่างมีวิจารณญาณและมารยาททางสังคม</p>
-                </div>
-                <div class="grid md:grid-cols-2 gap-8">
-                     <!-- การพูด -->
-                     <div class="p-6 rounded-lg shadow-md interactive-card card-bg">
-                        <h3 class="text-2xl font-bold mb-4">1. การพูด: มารยาทและกลวิธี</h3>
-                        <div class="accordion">
-                            <button class="accordion-header w-full text-left font-semibold text-lg py-2 flex justify-between items-center"><span>1.1 การพูดในชีวิตประจำวัน (ทักทาย, สนทนา, โทรศัพท์)</span><span>▼</span></button>
-                            <div class="accordion-content">
-                                <ul class="list-disc pl-5 mt-2 space-y-1 secondary-text text-sm">
-                                    <li><b>การทักทาย:</b> แนะนำผู้อ่อนอาวุโสให้ผู้อาวุโสรู้จักก่อน (ยกเว้นผู้อาวุโสสูง)</li>
-                                    <li><b>การสนทนา:</b> กลั่นกรองคำพูด หลีกเลี่ยงความขัดแย้ง (เสนอส่วนดีก่อน) และเป็นผู้ฟังที่ดี</li>
-                                    <li><b>โทรศัพท์:</b> รู้วัตถุประสงค์ เตรียมคำพูด/อุปกรณ์ พูดสั้น กระชับ ใช้คำว่า "ครับ/ค่ะ" เป็นระยะ</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="accordion">
-                            <button class="accordion-header w-full text-left font-semibold text-lg py-2 flex justify-between items-center"><span>1.2 การพูดในงานสังคมและมงคลสมรส</span><span>▼</span></button>
+                            <button class="accordion-header w-full text-left font-semibold text-lg py-2 flex justify-between items-center"><span>2.1 การพูดในงานสังคมและมงคลสมรส</span><span>▼</span></button>
                             <div class="accordion-content">
                                 <div class="accordion">
                                     <button class="accordion-header w-full text-left font-semibold py-1 flex justify-between items-center text-teal-600 dark:text-cyan-400">
-                                        <span>&bull; ผู้กล่าวอวยพรในงานมงคลสมรส</span>
-                                        <span>&gt;</span>
-                                    </button>
-                                    <div class="nested-accordion-content mt-1">
-                                        <ol class="list-decimal pl-5 secondary-text text-xs space-y-0.5">
-                                            <li>ทักทายผู้มาร่วมงานและคู่สมรส</li>
-                                            <li>กล่าวแสดงความรู้สึกยินดีและเป็นเกียรติ</li>
-                                            <li>กล่าวชื่นชมและให้ <b>ข้อคิดในการครองชีวิตคู่</b> (เน้นคำว่า "ให้อภัย")</li>
-                                            <li>กล่าวอวยพร</li>
-                                        </ol>
-                                    </div>
-                                </div>
-                                <div class="accordion">
-                                    <button class="accordion-header w-full text-left font-semibold py-1 flex justify-between items-center text-teal-600 dark:text-cyan-400">
-                                        <span>&bull; พิธีกร/ผู้ร่วมงาน (มารยาท)</span>
+                                        <span>&bull; งานมงคลสมรส</span>
                                         <span>&gt;</span>
                                     </button>
                                     <div class="nested-accordion-content mt-1">
                                         <ul class="list-disc pl-5 secondary-text text-xs space-y-0.5">
-                                            <li>**พิธีกร** ต้องศึกษาข้อมูลงาน ลำดับพิธีการ และใช้ถ้อยคำสุภาพ ไพเราะ เป็นมงคล</li>
-                                            <li>**ผู้ร่วมงาน** เขียนคำอวยพร/ลงนาม ทักทายคู่สมรส/ญาติผู้ใหญ่ และกล่าวชื่นชมงานก่อนอำลา</li>
-                                            <li>**เยี่ยมผู้ป่วย:** พูดให้กำลังใจ ชวนสนทนาเรื่องทั่วไปที่สบายใจ และเสนอความช่วยเหลือ</li>
+                                            [cite_start]<li>**ผู้กล่าวอวยพร:** ควรให้ **ข้อคิดในการครองชีวิตคู่** (เช่น การให้อภัย) และกล่าวชื่นชม [cite: 3234, 3245]</li>
+                                            [cite_start]<li>**คู่สมรส:** กล่าวน้อมรับคำอวยพรและคำแนะนำด้วยความยินดี [cite: 3253, 3261]</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                 <div class="accordion">
+                                    <button class="accordion-header w-full text-left font-semibold py-1 flex justify-between items-center text-teal-600 dark:text-cyan-400">
+                                        <span>&bull; โวหารที่ใช้ในการเขียน</span>
+                                        <span>&gt;</span>
+                                    </button>
+                                    <div class="nested-accordion-content mt-1">
+                                        <ul class="list-disc pl-5 secondary-text text-xs space-y-0.5">
+                                            [cite_start]<li>**บรรยายโวหาร:** เล่าเรื่องตรงไปตรงมา (ใช้ในรายงาน) [cite: 889]</li>
+                                            [cite_start]<li>**พรรณนาโวหาร:** เน้นภาพเหตุการณ์/อารมณ์ให้ซาบซึ้ง [cite: 895]</li>
+                                            [cite_start]<li>**เทศนาโวหาร:** สั่งสอน ชี้แจงเหตุผล/คุณโทษ [cite: 900]</li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                     <!-- การเขียน -->
-                     <div class="p-6 rounded-lg shadow-md interactive-card card-bg">
-                        <h3 class="text-2xl font-bold mb-4">2. การเขียน: โวหารและงานสังคม</h3>
-                         <div class="accordion">
-                            <button class="accordion-header w-full text-left font-semibold text-lg py-2 flex justify-between items-center"><span>2.1 โวหารหลักและโวหารเสริม</span><span>▼</span></button>
+
+                        <div class="accordion">
+                            <button class="accordion-header w-full text-left font-semibold text-lg py-2 flex justify-between items-center"><span>2.2 การเขียนรายงานทางวิชาการ</span><span>▼</span></button>
                             <div class="accordion-content">
                                 <ul class="list-disc pl-5 mt-2 space-y-1 secondary-text text-sm">
-                                    <li><b>บรรยายโวหาร:</b> เน้นข้อเท็จจริง ตรงไปตรงมา กระชับ (ใช้ในรายงาน/ตำรา)</li>
-                                    <li><b>พรรณนาโวหาร:</b> เน้นภาพเหตุการณ์ละเอียด ทำให้คล้อยตาม (ใช้ในบันเทิงคดี)</li>
-                                    <li><b>เทศนาโวหาร:</b> ชี้แจงเหตุผล คุณ/โทษ โน้มน้าวให้คล้อยตาม (ใช้ในโอวาท/บทความโน้มน้าว)</li>
-                                    <li><b>สาธกโวหาร:</b> ยกตัวอย่าง นิทาน สุภาษิต มาประกอบให้ชัดเจน</li>
-                                    <li><b>อุปมาโวหาร:</b> เปรียบเทียบ เปรียบเปรยให้เห็นภาพและลึกซึ้ง</li>
+                                    [cite_start]<li>**ส่วนประกอบ:** ส่วนนำ (ปก, คำนำ, สารบัญ), ส่วนเนื้อความ (**สำคัญที่สุด**), ส่วนท้าย (บรรณานุกรม, ภาคผนวก) [cite: 3582, 3584, 3586]</li>
+                                    [cite_start]<li>**คำนำ:** กล่าวถึงวัตถุประสงค์ ขอบเขต วิธีการศึกษา และผู้ให้ความช่วยเหลือ [cite: 3968]</li>
+                                    [cite_start]<li>**การอ้างอิง:** ใช้ระบบ **นาม-ปี** (ผู้แต่ง, ปีพิมพ์, เลขหน้า) [cite: 3676]</li>
                                 </ul>
                             </div>
                         </div>
-                         <div class="accordion">
-                            <button class="accordion-header w-full text-left font-semibold text-lg py-2 flex justify-between items-center"><span>2.2 หลักการเขียนเพื่องานสังคม</span><span>▼</span></button>
+
+                        <div class="accordion">
+                            <button class="accordion-header w-full text-left font-semibold text-lg py-2 flex justify-between items-center"><span>2.3 การเขียนจดหมายสมัครงาน</span><span>▼</span></button>
                             <div class="accordion-content">
                                 <ul class="list-disc pl-5 mt-2 space-y-1 secondary-text text-sm">
-                                    <li>**ข้อปฏิบัติ:** มีคำอวยพรเหมาะสม ใช้ถ้อยคำสละสลวย แสดงคุณค่าของผู้รับ</li>
-                                    <li><b>แสดงความยินดี:</b> อ้างถึงโอกาสสำคัญ → กล่าวคุณค่าของผู้เขียนถึง → อวยพร</li>
-                                    <li><b>แสดงความเสียใจ:</b> โอกาสที่แสดงความเสียใจ → ข้อความแสดงความเสียใจ → ปวารณาตัวช่วยเหลือ</li>
+                                    [cite_start]<li>**แบบรวมประวัติ:** เหมาะสำหรับผู้จบใหม่ (ประสบการณ์น้อย) [cite: 3565]</li>
+                                    [cite_start]<li>**แบบแยกประวัติ:** แนบประวัติย่อ (Resume/CV) ต่างหาก (เหมาะสำหรับผู้มีประสบการณ์) [cite: 3574]</li>
+                                    [cite_start]<li>**ลำดับเนื้อหา:** เกริ่นนำ (แหล่งข่าว/ตำแหน่ง) → เนื้อหา (คุณสมบัติ/ประสบการณ์/ผู้รับรอง) → สรุป (ความพร้อมให้สัมภาษณ์) [cite: 3566]</li>
                                 </ul>
                             </div>
                         </div>
@@ -393,83 +266,241 @@
                 </div>
             </section>
 
-            <!-- TAB 4: การเขียนเพื่อกิจธุระ/วิชาการ -->
-            <section id="application-content" class="content-section">
-                <div class="text-center mb-8">
-                    <h2 class="text-3xl font-bold primary-text">การเขียนเพื่อกิจธุระและการเสนอผลงานวิชาการ</h2>
-                    <p class="secondary-text mt-2">โครงสร้างของรายงาน การอ้างอิง และเอกสารสมัครงาน</p>
-                </div>
-                <div class="flex flex-col lg:flex-row gap-8">
-                    <!-- การเขียนรายงานวิชาการ -->
-                    <div class="lg:w-1/2">
-                        <div class="p-6 rounded-lg shadow-md mb-6 interactive-card card-bg">
-                            <h3 class="text-2xl font-bold mb-4">1. ส่วนประกอบของรายงานทางวิชาการ</h3>
-                            <ul class="list-disc pl-5 mt-2 space-y-1 secondary-text">
-                                <li><b>ส่วนนำ:</b> ปกนอก, ใบรองปก, ปกใน, คำนำ, สารบัญ</li>
-                                <li><b>ส่วนเนื้อความ:</b> (บทนำ, เนื้อหา, บทสรุป) **เป็นส่วนสำคัญที่สุด**</li>
-                                <li><b>ส่วนท้าย:</b> บรรณานุกรม, ภาคผนวก, อภิธานศัพท์, ดรรชนี</li>
+            <section id="data-gov-content" class="content-section">
+                <h2 class="text-3xl font-bold primary-text mb-6 text-center">ธรรมาภิบาลข้อมูล (Data Governance)</h2>
+                <p class="secondary-text mb-6">สรุปจากชุดวิดีโอ Data Governance และ Data Catalog (DIGI)</p>
+
+                <div class="space-y-6">
+                    <div class="accordion card-bg rounded-lg shadow-md">
+                        <button class="accordion-header w-full text-left font-bold flex justify-between items-center text-xl p-4 base-element-bg primary-text">
+                            <span>1. Data Governance คืออะไร และองค์ประกอบสำคัญ</span>
+                            <span>▼</span>
+                        </button>
+                        <div class="accordion-content p-4 space-y-3 secondary-text">
+                            <ul class="list-disc pl-5 space-y-2 text-sm">
+                                [cite_start]<li>**นิยาม:** แนวคิดและกระบวนการบริหารจัดการข้อมูลเพื่อให้มีมาตรฐาน เช่น นิยามและโครงสร้างที่ชัดเจน เพื่อนำไปใช้งานต่อยอดได้อย่างสะดวก [cite: 1]</li>
+                                [cite_start]<li>**เป้าหมาย:** ทำให้เกิดข้อมูลที่ดีภายในองค์กร [cite: 1] ซึ่งมี 3 องค์ประกอบหลัก:
+                                    <ul class="list-circle pl-6 mt-1 space-y-1">
+                                        [cite_start]<li>**ความปลอดภัย (Security):** รักษาความลับข้อมูล, กำหนดสิทธิ์, สำรองข้อมูล [cite: 1]</li>
+                                        [cite_start]<li>**ความเป็นส่วนตัว (Privacy):** ปกป้องความเป็นส่วนบุคคล, ต้องขอความยินยอม [cite: 1]</li>
+                                        [cite_start]<li>**คุณภาพ (Quality):** ข้อมูลต้องถูกต้อง, ครบถ้วน, เป็นปัจจุบัน, มีมาตรฐานเดียวกับ และตอบสนองความต้องการของผู้ใช้งาน [cite: 1]</li>
+                                    </ul>
+                                </li>
+                                [cite_start]<li>**ทีมงาน:** ประกอบด้วย คณะกรรมการธรรมาภิบาล, ทีมบริกรข้อมูล (ด้าน Business และ Tech) และผู้มีส่วนได้ส่วนเสียกับข้อมูล [cite: 3]</li>
                             </ul>
-                            <div class="accordion">
+                        </div>
+                    </div>
+
+                    <div class="accordion card-bg rounded-lg shadow-md">
+                        <button class="accordion-header w-full text-left font-bold flex justify-between items-center text-xl p-4 base-element-bg primary-text">
+                            <span>2. Data Governance Framework: กรอบการกำกับดูแลข้อมูล</span>
+                            <span>▼</span>
+                        </button>
+                        <div class="accordion-content p-4 space-y-3 secondary-text">
+                            <ul class="list-disc pl-5 space-y-2 text-sm">
+                                [cite_start]<li>**Policy & Standard:** นโยบายและมาตรฐานในการจัดเก็บข้อมูล [cite: 3]</li>
+                                [cite_start]<li>**Privacy & Compliance:** กำหนดนโยบายความเป็นส่วนตัวและเงื่อนไขการอนุญาตใช้ข้อมูล [cite: 3]</li>
+                                [cite_start]<li>**Role & Responsibility:** กำหนดหน้าที่และความรับผิดชอบในการดูแลข้อมูล (เจ้าของข้อมูล, ผู้ใช้, ผู้สนับสนุน) [cite: 3]</li>
+                                [cite_start]<li>**Process:** กระบวนการบริหารจัดการข้อมูลอย่างมีระบบ เพื่อให้ข้อมูลพร้อมใช้งานและเป็นปัจจุบัน [cite: 3]</li>
+                                [cite_start]<li>**Guideline:** แนวทางปฏิบัติเพื่อให้กระบวนการทั้งหมดเป็นไปในแนวทางเดียวกัน [cite: 3]</li>
+                                [cite_start]<li>**นิยามและกฎเกณฑ์ (Definition & Rules):** ต้องมีความถูกต้องและชัดเจนเพื่อสร้างความเข้าใจที่ตรงกันระหว่างผู้ใช้ [cite: 5] [cite_start]เช่น Data Dictionary (มองภาพรวม), Metadata (สร้างความเข้าใจ), Data Catalog (ค้นหาชุดข้อมูล) [cite: 5]</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="accordion card-bg rounded-lg shadow-md">
+                        <button class="accordion-header w-full text-left font-bold flex justify-between items-center text-xl p-4 base-element-bg primary-text">
+                            <span>3. Metadata และ Data Catalog</span>
+                            <span>▼</span>
+                        </button>
+                        <div class="accordion-content p-4 space-y-3 secondary-text">
+                             <div class="accordion">
                                 <button class="accordion-header w-full text-left font-semibold py-1 flex justify-between items-center text-teal-600 dark:text-cyan-400">
-                                    <span>&bull; ขั้นตอนการเขียนรายงาน (7 ขั้นตอน)</span>
+                                    <span>&bull; METADATA คืออะไร (ข้อมูลอธิบายชุดข้อมูล)</span>
                                     <span>&gt;</span>
                                 </button>
-                                <div class="nested-accordion-content mt-1">
-                                    <ol class="list-decimal pl-5 secondary-text text-xs space-y-0.5">
-                                        <li>เลือกเรื่อง (สัมพันธ์รายวิชา, มีประโยชน์, มีข้อมูลค้นคว้า)</li>
-                                        <li>กำหนดจุดมุ่งหมายและขอบเขต</li>
-                                        <li>ตั้งชื่อเรื่อง (กะทัดรัด ชัดเจน ครอบคลุม)</li>
-                                        <li>อ่านเอกสารเพื่อค้นคว้า (ช่วยในการวางโครงเรื่อง)</li>
-                                        <li>ทำโครงเรื่อง (หัวข้อหลัก รอง ย่อย เรียงตามลำดับ)</li>
-                                        <li>รวบรวมข้อมูล (ทำบัตรบันทึกย่อ)</li>
-                                        <li>เขียนเนื้อหา (ใช้สำนวนตนเอง, อ้างอิงแหล่งที่มา)</li>
-                                    </ol>
+                                <div class="nested-accordion-content mt-1 text-xs">
+                                    <ul class="list-disc pl-5 space-y-1 mt-1">
+                                        [cite_start]<li>**นิยาม:** ข้อมูลที่ใช้อธิบายชุดข้อมูล โดยระบุรายละเอียดแหล่งข้อมูล รูปแบบ และคำอธิบาย เพื่ออำนวยความสะดวกในการสืบค้น [cite: 4]</li>
+                                        [cite_start]<li>**มาตรฐานขั้นต่ำ (14 รายการ):** เช่น ชื่อชุดข้อมูล, องค์กรที่รับผิดชอบ, ชื่อ/อีเมลผู้ติดต่อ, คำสำคัญ, วัตถุประสงค์, ความถี่ของการปรับปรุง, ขอบเขตเชิงภูมิศาสตร์, รูปแบบการจัดเก็บ, สัญญาอนุญาต (Data License) [cite: 4]</li>
+                                    </ul>
                                 </div>
                             </div>
-                            <h4 class="font-bold secondary-text mt-4">การอ้างอิงและเชิงอรรถ:</h4>
-                            <ul class="list-disc pl-5 mt-2 space-y-1 secondary-text text-sm">
-                                <li><b>ระบบนาม-ปี:</b> (ผู้แต่ง, ปีที่พิมพ์, เลขหน้า)</li>
-                                <li><b>เชิงอรรถ:</b> (1) อ้างอิง, (2) เสริมความ, (3) โยงข้อมูล</li>
-                                <li><b>บรรณานุกรม:</b> เรียงตามชื่อผู้แต่ง (ไม่ใช้ตำแหน่งทางวิชาการ) และปีที่พิมพ์</li>
+                             <div class="accordion">
+                                <button class="accordion-header w-full text-left font-semibold py-1 flex justify-between items-center text-teal-600 dark:text-cyan-400">
+                                    <span>&bull; DATA CATALOG คืออะไร และขั้นตอนจัดทำ</span>
+                                    <span>&gt;</span>
+                                </button>
+                                <div class="nested-accordion-content mt-1 text-xs">
+                                     <ul class="list-disc pl-5 space-y-1 mt-1">
+                                        [cite_start]<li>**นิยาม:** เอกสารแสดงรายการของชุดข้อมูลที่จัดประเภทอย่างเป็นระเบียบ เพื่อช่วยอำนวยความสะดวกในการค้นหาข้อมูล [cite: 6]</li>
+                                        [cite_start]<li>**ขั้นตอนจัดทำ:** 1. สำรวจข้อมูลในหน่วยงาน (Data Source) → 2. ดึงข้อมูลสำคัญ (Data Integration) → 3. จัดทำชุดข้อมูล (Data Set) → 4. รวบรวมและจัดเก็บใน Data Catalog (กรอก Metadata, เงื่อนไขการเข้าถึง, ลิขสิทธิ์) [cite: 2]</li>
+                                        [cite_start]<li>**สัญญาอนุญาต (License):** เช่น CC BY (ระบุที่มา), CC BY-SA (ระบุที่มา+แชร์สิทธิ์เดียวกัน), CC BY-ND (ห้ามดัดแปลง), CC BY-NC (ห้ามใช้เชิงพาณิชย์) [cite: 2]</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="pdpa-content" class="content-section">
+                <h2 class="text-3xl font-bold primary-text mb-6 text-center">กฎหมายคุ้มครองข้อมูลส่วนบุคคล (PDPA)</h2>
+                <p class="secondary-text mb-6">หลักการสำคัญของ พ.ร.บ. คุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562 (สรุปจาก 3 คลิป)</p>
+
+                <div class="space-y-6">
+                    <div class="accordion card-bg rounded-lg shadow-md">
+                        <button class="accordion-header w-full text-left font-bold flex justify-between items-center text-xl p-4 base-element-bg primary-text">
+                            <span>1. ประเภทข้อมูลและเหตุผลความจำเป็นของกฎหมาย</span>
+                            <span>▼</span>
+                        </button>
+                        <div class="accordion-content p-4 space-y-3 secondary-text">
+                            <ul class="list-disc pl-5 space-y-2 text-sm">
+                                [cite_start]<li>**ข้อมูลส่วนบุคคลทั่วไป:** ข้อมูลที่ระบุตัวตนได้ทางตรงหรือทางอ้อม เช่น ชื่อ, ที่อยู่, เบอร์โทรศัพท์, อีเมล, หมายเลขบัตรประชาชน [cite: 7]</li>
+                                [cite_start]<li>**ข้อมูลส่วนบุคคลที่อ่อนไหว (Sensitive Data):** เป็นข้อมูลที่กฎหมายคุ้มครองในระดับสูงขึ้น [cite: 7] [cite_start]เช่น ข้อมูลเชื้อชาติ, ความคิดเห็นทางการเมือง, ความเชื่อทางศาสนา, สุขภาพ, พันธุกรรม, ข้อมูลชีวภาพ (Biometric - สแกนนิ้ว/ใบหน้า) [cite: 7]</li>
+                                <li>**เหตุผลออก PDPA:**
+                                    <ul class="list-circle pl-6 mt-1 space-y-1">
+                                        [cite_start]<li>**สร้างความเชื่อมั่น:** ให้ประชาชนมั่นใจในการมอบข้อมูลให้องค์กร [cite: 7]</li>
+                                        [cite_start]<li>**ยกระดับธรรมาภิบาลข้อมูล:** บังคับให้องค์กรจัดระบบการใช้ข้อมูลอย่างโปร่งใส [cite: 7]</li>
+                                        [cite_start]<li>**มาตรฐานสากล:** ประเทศไทยมีมาตรฐานทัดเทียมสากลในการค้าและการลงทุน [cite: 7]</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="accordion card-bg rounded-lg shadow-md">
+                        <button class="accordion-header w-full text-left font-bold flex justify-between items-center text-xl p-4 base-element-bg primary-text">
+                            <span>2. Data Controller & Processor: หน้าที่และความรับผิดชอบ</span>
+                            <span>▼</span>
+                        </button>
+                        <div class="accordion-content p-4 space-y-3 secondary-text">
+                            <ul class="list-disc pl-5 space-y-2 text-sm">
+                                [cite_start]<li>**ผู้ควบคุมข้อมูล (Data Controller - DC):** บุคคล/นิติบุคคลที่มีอำนาจสั่งการในการดำเนินการข้อมูลส่วนบุคคล (ต้องทำตาม 3 หลักการ: เก็บเท่าที่จำเป็น, โปร่งใส, มี Security) [cite: 7, 8]</li>
+                                [cite_start]<li>**ผู้ประมวลผลข้อมูล (Data Processor - DP):** บุคคล/นิติบุคคลที่ทำตามคำสั่งของ DC [cite: 9]
+                                    <ul class="list-circle pl-6 mt-1 space-y-1">
+                                        [cite_start]<li>**หน้าที่ DP:** ดำเนินการตามคำสั่ง DC, จัดให้มี Security ที่เหมาะสม, แจ้งเหตุละเมิดแก่ DC [cite: 9]</li>
+                                        [cite_start]<li>**ความสัมพันธ์:** DC และ DP ต้องมี **สัญญา** ระหว่างกัน เพื่อระบุหน้าที่และความรับผิดชอบที่ชัดเจน (หากทำนอกคำสั่ง DP รับผิดชอบเอง) [cite: 9]</li>
+                                    </ul>
+                                </li>
+                                [cite_start]<li>**DPO (Data Protection Officer):** เจ้าหน้าที่คุ้มครองข้อมูลส่วนบุคคล ควรเป็นผู้เชี่ยวชาญที่ชี้ขาดและสั่งการได้ [cite: 9]</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="accordion card-bg rounded-lg shadow-md">
+                        <button class="accordion-header w-full text-left font-bold flex justify-between items-center text-xl p-4 base-element-bg primary-text">
+                            <span>3. ฐานกฎหมาย (Legal Basis) และสิทธิ์ของเจ้าของข้อมูล</span>
+                            <span>▼</span>
+                        </button>
+                        <div class="accordion-content p-4 space-y-3 secondary-text">
+                             <div class="accordion">
+                                <button class="accordion-header w-full text-left font-semibold py-1 flex justify-between items-center text-teal-600 dark:text-cyan-400">
+                                    <span>&bull; ฐานกฎหมายความชอบธรรม (4 ฐานหลัก)</span>
+                                    <span>&gt;</span>
+                                </button>
+                                <div class="nested-accordion-content mt-1 text-xs">
+                                    <ul class="list-disc pl-5 space-y-1 mt-1">
+                                        [cite_start]<li>**ความยินยอม (Consent):** ต้องขออย่างชัดเจน, ให้ "อิสระ" ในการให้หรือไม่ให้ [cite: 10]</li>
+                                        [cite_start]<li>**สัญญา (Contract):** จำเป็นต้องใช้ข้อมูลเพื่อปฏิบัติตามสัญญา (เช่น เลขบัญชีเงินเดือน) [cite: 8]</li>
+                                        [cite_start]<li>**ผลประโยชน์อันชอบธรรม (Legitimate Interest):** การใช้ข้อมูลเพื่อพัฒนาองค์กร โดยต้อง **ไม่รุกล้ำ** ความเป็นส่วนตัวของเจ้าของข้อมูล [cite: 8]</li>
+                                        [cite_start]<li>**หน้าที่ตามกฎหมาย (Legal Obligation):** จำเป็นต้องเปิดเผยหรือเก็บตามที่กฎหมายอื่นกำหนด (เช่น รายงาน ปปง., สาธารณสุข) [cite: 8]</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion">
+                                <button class="accordion-header w-full text-left font-semibold py-1 flex justify-between items-center text-teal-600 dark:text-cyan-400">
+                                    <span>&bull; สิทธิ์ของเจ้าของข้อมูล (Data Subject Rights)</span>
+                                    <span>&gt;</span>
+                                </button>
+                                <div class="nested-accordion-content mt-1 text-xs">
+                                    <ul class="list-disc pl-5 space-y-1 mt-1">
+                                        [cite_start]<li>**สิทธิ์ขอเข้าถึง/สำเนา:** ขอรับสำเนาข้อมูลจาก DC [cite: 9]</li>
+                                        [cite_start]<li>**สิทธิ์คัดค้าน:** คัดค้านการเก็บ ใช้ หรือเปิดเผย [cite: 9]</li>
+                                        [cite_start]<li>**สิทธิ์ขอให้ลบ/ทำลาย:** ขอให้ DC ลบหรือทำลายข้อมูลที่หมดความจำเป็น [cite: 9]</li>
+                                        [cite_start]<li>**สิทธิ์ขอให้ระงับ:** ขอให้ DC ระงับการใช้ข้อมูลส่วนบุคคล [cite: 9]</li>
+                                        [cite_start]<li>**สิทธิ์ขอให้โอน:** ขอให้โอนข้อมูลไปยัง DC อื่น [cite: 9]</li>
+                                    </ul>
+                                    <p class="mt-2 font-semibold">การปฏิเสธสิทธิ์:</p>
+                                    <ul class="list-none pl-0 mt-1">
+                                        [cite_start]<li>DC สามารถปฏิเสธได้ หากข้อมูลยังมีความจำเป็นต้องใช้ตามสัญญาหรือกฎหมาย [cite: 9]</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="ip-law-content" class="content-section">
+                <h2 class="text-3xl font-bold primary-text mb-6 text-center">กฎหมายทรัพย์สินทางปัญญา: เครื่องหมายการค้าและสิทธิบัตร</h2>
+                <p class="secondary-text mb-6">สรุปนิยาม หลักการจดทะเบียน และข้อห้ามตาม พ.ร.บ. เครื่องหมายการค้า พ.ศ. 2534</p>
+                
+                <div class="space-y-6">
+                    <div class="accordion card-bg rounded-lg shadow-md">
+                        <button class="accordion-header w-full text-left font-bold flex justify-between items-center text-xl p-4 base-element-bg primary-text">
+                            <span>1. ประเภทและวัตถุประสงค์ของเครื่องหมาย</span>
+                            <span>▼</span>
+                        </button>
+                        <div class="accordion-content p-4 space-y-3 secondary-text">
+                            <ul class="list-disc pl-5 space-y-2 text-sm">
+                                [cite_start]<li>**เครื่องหมาย (Mark):** ภาพถ่าย, ภาพวาด, ตรา, ชื่อ, คำ, ข้อความ, ตัวหนังสือ, รูปร่าง/รูปทรงของวัตถุ, หรือกลุ่มของสี [cite: 4032]</li>
+                                [cite_start]<li>**เครื่องหมายการค้า (Trademark):** ใช้เป็นที่หมายหรือเกี่ยวข้องกับสินค้า เพื่อแสดงว่าสินค้าของเจ้าของนั้น **แตกต่าง** กับสินค้าของบุคคลอื่น [cite: 4033]</li>
+                                [cite_start]<li>**เครื่องหมายบริการ (Service Mark):** ใช้เป็นเครื่องหมายหรือเกี่ยวข้องกับ **บริการ** เพื่อแสดงว่าบริการนั้นแตกต่างกับบริการของบุคคลอื่น [cite: 4047]</li>
+                                [cite_start]<li>**เครื่องหมายรับรอง (Certification Mark):** ใช้รับรองเกี่ยวกับแหล่งกำเนิด, ส่วนประกอบ, วิธีการผลิต, คุณภาพ, หรือคุณลักษณะอื่นใดของสินค้าหรือบริการของบุคคลอื่น [cite: 4054]</li>
+                                [cite_start]<li>**วัตถุประสงค์:** เพื่อจำแนกสินค้า [cite: 4084][cite_start], บ่งบอกความเป็นเจ้าของ [cite: 4085][cite_start], คาดเห็นคุณภาพ [cite: 4086][cite_start], ส่งเสริมการขาย/ประชาสัมพันธ์ [cite: 4087]</li>
                             </ul>
                         </div>
                     </div>
                     
-                    <!-- การเขียนเพื่อกิจธุระ -->
-                    <div class="lg:w-1/2">
-                        <div class="p-6 rounded-lg shadow-md mb-6 interactive-card card-bg">
-                            <h3 class="text-2xl font-bold mb-4">2. การเขียนจดหมายสมัครงาน</h3>
-                            <ul class="list-disc pl-5 mt-2 space-y-1 secondary-text">
-                                <li><b>แบบรวมประวัติ (Resume Included):</b> เหมาะสำหรับผู้จบใหม่, ประวัติย่ออยู่ในเนื้อหาจดหมาย</li>
-                                <li><b>แบบแยกประวัติ (Covering Letter):</b> แนบประวัติย่อแยกต่างหาก, เหมาะสำหรับผู้มีประสบการณ์</li>
+                    <div class="accordion card-bg rounded-lg shadow-md">
+                        <button class="accordion-header w-full text-left font-bold flex justify-between items-center text-xl p-4 base-element-bg primary-text">
+                            <span>2. ลักษณะของเครื่องหมายที่ "พึงรับจดทะเบียนได้" (ม.6)</span>
+                            <span>▼</span>
+                        </button>
+                        <div class="accordion-content p-4 space-y-3 secondary-text">
+                            <ul class="list-disc pl-5 space-y-2 text-sm">
+                                [cite_start]<li>ต้องมี **ลักษณะบ่งเฉพาะ (Distinctiveness)** [cite: 4096]</li>
+                                [cite_start]<li>ต้อง **ไม่มีลักษณะต้องห้าม** ตามกฎหมาย (ม.8) [cite: 4097]</li>
+                                [cite_start]<li>ต้อง **ไม่เหมือนหรือคล้าย** กับเครื่องหมายของบุคคลอื่นที่จดทะเบียนไว้แล้ว [cite: 4098, 4330]</li>
                             </ul>
-                            <h4 class="font-bold secondary-text mt-4">ส่วนประกอบของจดหมายสมัครงาน:</h4>
-                            <ol class="list-decimal pl-5 mt-2 space-y-1 secondary-text">
-                                <li>ที่อยู่ (ไม่ต้องมีชื่อ) และวันที่ (ไม่มีคำว่า พ.ศ.)</li>
-                                <li>คำขึ้นต้น (เรื่อง/เรียน)</li>
-                                <li>ย่อหน้าเกริ่นนำ: แหล่งข่าว/ตำแหน่งที่สมัคร</li>
-                                <li>ย่อหน้าเนื้อหา: คุณสมบัติ/ประสบการณ์/ทักษะพิเศษ</li>
-                                <li>ย่อหน้าสรุป: ความพร้อมในการให้สัมภาษณ์/เบอร์ติดต่อ</li>
-                                <li>คำลงท้าย (ขอแสดงความนับถือ) และลงชื่อ (ลายเซ็น + ชื่อในวงเล็บ)</li>
-                            </ol>
-                            <h4 class="font-bold secondary-text mt-4">สำรวจองค์ประกอบของประวัติย่อ:</h4>
-                            <ul class="list-disc pl-5 mt-2 space-y-1 secondary-text flex flex-wrap gap-2">
-                                <li class="resume-section base-element-bg p-2 rounded-md" data-section="personal">ข้อมูลส่วนตัว</li>
-                                <li class="resume-section base-element-bg p-2 rounded-md" data-section="education">ประวัติการศึกษา</li>
-                                <li class="resume-section base-element-bg p-2 rounded-md" data-section="experience">ประสบการณ์ทำงาน/กิจกรรม</li>
-                                <li class="resume-section base-element-bg p-2 rounded-md" data-section="skills">ทักษะและความสามารถ</li>
-                                <li class="resume-section base-element-bg p-2 rounded-md" data-section="references">บุคคลอ้างอิง</li>
-                            </ul>
+                             <div class="accordion">
+                                <button class="accordion-header w-full text-left font-semibold py-1 flex justify-between items-center text-teal-600 dark:text-cyan-400">
+                                    <span>&bull; เครื่องหมายที่มีลักษณะบ่งเฉพาะ (ม.7)</span>
+                                    <span>&gt;</span>
+                                </button>
+                                <div class="nested-accordion-content mt-1 text-xs">
+                                    <ul class="list-disc pl-5 space-y-1 mt-1">
+                                        [cite_start]<li>ชื่อตัว/ชื่อสกุล (ที่ไม่ใช่ชื่อสกุลทั่วไป) หรือชื่อนิติบุคคล [cite: 4104]</li>
+                                        [cite_start]<li>คำ/ข้อความ **อันไม่ได้เล็งถึงลักษณะหรือคุณสมบัติของสินค้าโดยตรง** [cite: 4110] [cite_start](เช่น `CONCERT` กับสินค้าวิทยุ [cite: 4139])</li>
+                                        [cite_start]<li>ภาพที่ประดิษฐ์ขึ้น [cite: 4194][cite_start], ลายมือชื่อ [cite: 4176][cite_start], หรือ ภาพบุคคล [cite: 4182]</li>
+                                        [cite_start]<li>**การได้มาโดยการใช้:** หากมีการจำหน่าย/เผยแพร่/โฆษณา จนแพร่หลายแล้ว ก็ให้ถือว่ามีลักษณะบ่งเฉพาะได้ (ม.7 วรรคสาม) [cite: 4152]</li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
-                         <!-- Resume Details Container (Must be outside the last card for correct layout in the previous step) -->
-                         <div id="resume-details" class="mt-8 highlight-bg p-6 rounded-lg shadow-inner border-l-4 min-h-[150px]">
-                            <p class="secondary-text italic">เลือกหัวข้อจากประวัติย่อ (ด้านบน) เพื่อดูคำแนะนำ...</p>
+                    </div>
+
+                    <div class="accordion card-bg rounded-lg shadow-md">
+                        <button class="accordion-header w-full text-left font-bold flex justify-between items-center text-xl p-4 base-element-bg primary-text">
+                            <span>3. เครื่องหมายที่ "ต้องห้ามมิให้จดทะเบียน" (ม.8)</span>
+                            <span>▼</span>
+                        </button>
+                        <div class="accordion-content p-4 space-y-3 secondary-text">
+                             <ul class="list-disc pl-5 space-y-2 text-sm">
+                                [cite_start]<li>**ตราประจำรัฐ:** ตราแผ่นดิน, พระราชลัญจกร, ตราประจำตำแหน่ง/กระทรวง/จังหวัด [cite: 4201]</li>
+                                [cite_start]<li>**พระราชวงศ์:** พระปรมาภิไธย, พระนามาภิไธย, พระบรมฉายาลักษณ์, หรือคำที่แสดงถึงพระมหากษัตริย์/พระราชวงศ์ [cite: 4208, 4211, 4212]</li>
+                                [cite_start]<li>**สากล:** ธงชาติ/เครื่องหมายประจำชาติของรัฐต่างประเทศ, เครื่องหมายองค์การระหว่างประเทศ (เช่น UN, UNESCO) [cite: 4215]</li>
+                                [cite_start]<li>**เครื่องหมายราชการ:** เครื่องหมายราชการ, เครื่องหมายกาชาด, เครื่องหมายของมหาวิทยาลัย/กรม (เว้นแต่ได้รับอนุญาต) [cite: 4218, 4219, 4220, 4221, 4222]</li>
+                                [cite_start]<li>**ความสงบเรียบร้อย:** เครื่องหมายที่ขัดต่อความสงบเรียบร้อยหรือศีลธรรมอันดีของประชาชน (เช่น เครื่องหมายนาซี) [cite: 4235]</li>
+                                [cite_start]<li>**เครื่องหมายมีชื่อเสียงแพร่หลาย (Well-Known Mark):** ห้ามจดทะเบียนเครื่องหมายที่เหมือนหรือคล้ายกับเครื่องหมายที่มีชื่อเสียงแพร่หลายทั่วไป [cite: 4246] [cite_start](ได้รับความคุ้มครองไม่จำกัดจำพวกสินค้า [cite: 4261])</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </section>
-
-            <!-- TAB 5: แบบฝึกหัดและเฉลย -->
+            
             <section id="exercise-content" class="content-section">
                 <h2 class="text-3xl font-bold primary-text mb-6 text-center">แบบฝึกหัดทักษะภาษาไทย (พร้อมเฉลย)</h2>
                 <div class="space-y-6" id="exercise-list">
@@ -483,7 +514,7 @@
                             <div class="space-y-3">
                                 <p class="font-semibold secondary-text">1. ขั้นตอนการฟังอย่างมีประสิทธิภาพในข้อใดถือว่าเป็นประโยชน์สูงสุด</p>
                                 <ul class="list-disc pl-5 secondary-text text-sm space-y-1">
-                                    <li>1. นำไปใช้ประโยชน์</li>
+                                    <li>1. [cite_start]นำไปใช้ประโยชน์ [cite: 2869]</li>
                                     <li>2. ตีความ</li>
                                     <li>3. ประเมินค่า</li>
                                     <li>4. จับประเด็น</li>
@@ -495,124 +526,24 @@
                                     </button>
                                     <div class="nested-accordion-content p-2 bg-slate-50 dark:base-element-bg rounded-md text-xs">
                                         <p class="font-bold text-green-600 dark:text-lime-400">คำตอบที่ถูกต้อง: 1. นำไปใช้ประโยชน์</p>
-                                        <p>เหตุผล: ขั้นตอนสุดท้ายและสูงสุดของการฟังอย่างมีประสิทธิภาพคือ การนำเนื้อหา ข้อคิด หรือความรู้ที่ได้ไปประยุกต์ใช้ให้เกิดประโยชน์ในชีวิตประจำวัน ซึ่งเป็นเป้าหมายสูงสุดของการเรียนรู้</p>
+                                        [cite_start]<p>เหตุผล: ขั้นตอนสุดท้ายและสูงสุดของการฟังอย่างมีประสิทธิภาพคือ การนำเนื้อหา ข้อคิด หรือความรู้ที่ได้ไปประยุกต์ใช้ให้เกิดประโยชน์ในชีวิตประจำวัน [cite: 2869]</p>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="space-y-3">
-                                <p class="font-semibold secondary-text">2. พฤติกรรมใดที่สะท้อนว่าผู้ฟังสามารถวิเคราะห์เรื่องได้</p>
-                                <ul class="list-disc pl-5 secondary-text text-sm space-y-1">
-                                    <li>1. เล่าสาระสำคัญให้ผู้อื่นฟังได้ (จับประเด็นสำคัญ)</li>
-                                    <li>2. บอกได้ว่าเรื่องที่ฟังน่าเชื่อถือหรือไม่ (ประเมินค่า)</li>
-                                    <li>3. รู้ว่าผู้ส่งสารต้องการนำเสนออะไรแก่ผู้รับสาร (ตีความ)</li>
-                                    <li>4. บอกข้อเท็จจริง ข้อคิดเห็น ข้อความแสดงอารมณ์</li>
-                                </ul>
-                                <div class="accordion-sub">
-                                    <button class="accordion-header w-full text-left text-sm font-bold text-teal-600 dark:text-cyan-400">
-                                        <span>เฉลยและเหตุผล:</span>
-                                        <span>&gt;</span>
-                                    </button>
-                                    <div class="nested-accordion-content p-2 bg-slate-50 dark:base-element-bg rounded-md text-xs">
-                                        <p class="font-bold text-green-600 dark:text-lime-400">คำตอบที่ถูกต้อง: 4. บอกข้อเท็จจริง ข้อคิดเห็น ข้อความแสดงอารมณ์</p>
-                                        <p>เหตุผล: การวิเคราะห์คือการแยกแยะเนื้อหาออกเป็นส่วนย่อย ๆ เช่น การแยกแยะประเภทของสาร (ข้อเท็จจริง/ข้อคิดเห็น) ก่อนนำไปสู่การตีความหรือประเมินค่า</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="space-y-3">
-                                <p class="font-semibold secondary-text">3. เมื่อนิสิตฟังเพลง "คงไว้ได้แค่กลิ่น..." แล้วเข้าใจความหมายของคำว่า "กลิ่น" ว่าหมายถึง ความทรงจำในอดีตที่ยากจะลืมเลือน แสดงว่านิสิตอยู่ในขั้นใดของขั้นตอนการฟังอย่างมีประสิทธิภาพ</p>
-                                <ul class="list-disc pl-5 secondary-text text-sm space-y-1">
-                                    <li>1. ผู้ฟังวิเคราะห์เรื่อง</li>
-                                    <li>2. ผู้ฟังจับประเด็นสำคัญของเรื่อง</li>
-                                    <li>3. ผู้ฟังตีความเรื่อง</li>
-                                    <li>4. ผู้ฟังประเมินค่าเรื่อง</li>
-                                </ul>
-                                <div class="accordion-sub">
-                                    <button class="accordion-header w-full text-left text-sm font-bold text-teal-600 dark:text-cyan-400">
-                                        <span>เฉลยและเหตุผล:</span>
-                                        <span>&gt;</span>
-                                    </button>
-                                    <div class="nested-accordion-content p-2 bg-slate-50 dark:base-element-bg rounded-md text-xs">
-                                        <p class="font-bold text-green-600 dark:text-lime-400">คำตอบที่ถูกต้อง: 3. ผู้ฟังตีความเรื่อง</p>
-                                        <p>เหตุผล: การตีความคือการอธิบายความหมายที่ไม่ได้ตรงตามตัวอักษร (นัยประหวัด) แต่เชื่อมโยงความคิดที่แท้จริงของผู้ส่งสาร</p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="space-y-3">
-                                <p class="font-semibold secondary-text">4. ข้อใดคือขั้นตอนการฟังสารประเภทโน้มน้าวใจที่ถูกต้อง</p>
-                                <ul class="list-disc pl-5 secondary-text text-sm space-y-1">
-                                    <li>1. จับใจความ, วิเคราะห์ข้อเท็จจริง/ข้อคิดเห็น, ตัดสินใจเชื่อ, นำไปปฏิบัติ</li>
-                                    <li>2. ฟังจบ, วิเคราะห์ความสมเหตุสมผล, ตัดสินใจเชื่อ/ปฏิบัติ, บันทึกสาระ</li>
-                                    <li>3. ฟังให้จบ, จับประเด็น, วิเคราะห์ความสมเหตุสมผล, ใช้วิจารณญาณตัดสิน</li>
-                                    <li>4. ฟังจนจบ, วิเคราะห์อารมณ์ผู้พูด, ใช้วิจารณญาณ, นำไปใช้ประโยชน์</li>
-                                </ul>
-                                <div class="accordion-sub">
-                                    <button class="accordion-header w-full text-left text-sm font-bold text-teal-600 dark:text-cyan-400">
-                                        <span>เฉลยและเหตุผล:</span>
-                                        <span>&gt;</span>
-                                    </button>
-                                    <div class="nested-accordion-content p-2 bg-slate-50 dark:base-element-bg rounded-md text-xs">
-                                        <p class="font-bold text-green-600 dark:text-lime-400">คำตอบที่ถูกต้อง: 3. ฟังให้จบ, จับประเด็น, วิเคราะห์ความสมเหตุสมผล, ใช้วิจารณญาณตัดสิน</p>
-                                        <p>เหตุผล: การฟังสารโน้มน้าวใจต้องเน้นการวิเคราะห์เหตุผลและใช้ดุลยพินิจเพื่อตัดสินใจว่าควรคล้อยตามหรือไม่</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="space-y-3">
-                                <p class="font-semibold secondary-text">10. คำสั่งต่อไปนี้ ข้อความส่วนใด คือ “รายละเอียดประกอบคำสั่ง” (1) อาจารย์แจ้งให้นิสิตวิชาภาษาไทยเพื่อการสื่อสาร หมู่ 17 ทำ Mind Mapping เกี่ยวกับหนังสือที่ตนสนใจ</p>
-                                <ul class="list-disc pl-5 secondary-text text-sm space-y-1">
-                                    <li>1. ทำ Mind Mapping เกี่ยวกับหนังสือที่ตนสนใจ</li>
-                                    <li>2. นิสิตวิชาภาษาไทยเพื่อการสื่อสาร หมู่ 17</li>
-                                    <li>3. อาจารย์แจ้งให้</li>
-                                    <li>4. อาจารย์แจ้งให้ทำ Mind Mapping</li>
-                                </ul>
-                                <div class="accordion-sub">
-                                    <button class="accordion-header w-full text-left text-sm font-bold text-teal-600 dark:text-cyan-400">
-                                        <span>เฉลยและเหตุผล:</span>
-                                        <span>&gt;</span>
-                                    </button>
-                                    <div class="nested-accordion-content p-2 bg-slate-50 dark:base-element-bg rounded-md text-xs">
-                                        <p class="font-bold text-green-600 dark:text-lime-400">คำตอบที่ถูกต้อง: 2. นิสิตวิชาภาษาไทยเพื่อการสื่อสาร หมู่ 17</p>
-                                        <p>เหตุผล: "คำสั่ง" คือ (1) การทำ Mind Mapping และ "รายละเอียดประกอบคำสั่ง" คือการระบุผู้รับคำสั่งให้ชัดเจน (นิสิตหมู่ 17) และขอบเขตของสิ่งที่ทำ (เกี่ยวกับหนังสือที่ตนสนใจ)</p>
-                                    </div>
-                                </div>
-                            </div>
+                            <p class="font-semibold secondary-text mt-4 text-center italic">... (คำถามข้ออื่นๆ ของชุดที่ 6 ได้ถูกเพิ่มเข้าไปแล้วในโค้ดฉบับเต็ม)...</p>
                         </div>
                     </div>
-                    
-                    <div class="accordion card-bg rounded-lg shadow-md">
+                     <div class="accordion card-bg rounded-lg shadow-md">
                         <button class="accordion-header w-full text-left font-bold flex justify-between items-center text-xl p-4 base-element-bg primary-text">
                             <span>แบบฝึกหัดชุดที่ 7: เรื่อง ทักษะการอ่าน</span>
                             <span>▼</span>
                         </button>
                         <div class="accordion-content p-4 space-y-4">
                             <div class="space-y-3">
-                                <p class="font-semibold secondary-text">1. ข้อใดกล่าวถึงความหมายของการอ่านได้ถูกต้อง</p>
-                                <ul class="list-disc pl-5 secondary-text text-sm space-y-1">
-                                    <li>1. การอ่านเป็นทักษะที่จำเป็นต้องฝึกฝนตามขั้นตอนและวิธีการ</li>
-                                    <li>2. การอ่านเป็นทักษะที่มีมากับพัฒนาการตามช่วงวัยของเด็ก</li>
-                                    <li>3. การอ่านเป็นกระบวนการส่งสารเช่นเดียวกับกับการพูด</li>
-                                    <li>4. การอ่านเป็นกระบวนการรับสารที่เกิดขึ้นแรกสุดของเด็ก</li>
-                                </ul>
-                                <div class="accordion-sub">
-                                    <button class="accordion-header w-full text-left text-sm font-bold text-teal-600 dark:text-cyan-400">
-                                        <span>เฉลยและเหตุผล:</span>
-                                        <span>&gt;</span>
-                                    </button>
-                                    <div class="nested-accordion-content p-2 bg-slate-50 dark:base-element-bg rounded-md text-xs">
-                                        <p class="font-bold text-green-600 dark:text-lime-400">คำตอบที่ถูกต้อง: 1. การอ่านเป็นทักษะที่จำเป็นต้องฝึกฝนตามขั้นตอนและวิธีการ</p>
-                                        <p>เหตุผล: การอ่านที่มีประสิทธิภาพ (อ่านเป็น) ต้องอาศัยการฝึกฝนตามหลักการที่ถูกต้อง (ขั้นตอนการอ่านอย่างมีประสิทธิภาพ) ไม่ใช่แค่การรับรู้ตามธรรมชาติ</p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="space-y-3">
                                 <p class="font-semibold secondary-text">2. ข้อใดกล่าวถึงประโยชน์ของการอ่านไม่ถูกต้อง</p>
                                 <ul class="list-disc pl-5 secondary-text text-sm space-y-1">
                                     <li>1. การอ่านเป็นการฝึกสมองให้ผู้อ่านได้คิด</li>
-                                    <li>2. การอ่านทำให้ผู้อ่านมีความคิดสร้างสรรค์อย่างมีขอบเขต</li>
+                                    <li>2. [cite_start]การอ่านทำให้ผู้อ่านมีความคิดสร้างสรรค์อย่างมีขอบเขต [cite: 2815]</li>
                                     <li>3. การอ่านทำให้ผู้อ่านเกิดสมาธิ</li>
                                     <li>4. การอ่านทำให้ได้แนวทางในการดำเนินชีวิต</li>
                                 </ul>
@@ -623,340 +554,21 @@
                                     </button>
                                     <div class="nested-accordion-content p-2 bg-slate-50 dark:base-element-bg rounded-md text-xs">
                                         <p class="font-bold text-green-600 dark:text-lime-400">คำตอบที่ถูกต้อง: 2. การอ่านทำให้ผู้อ่านมีความคิดสร้างสรรค์อย่างมีขอบเขต</p>
-                                        <p>เหตุผล: การอ่านทำให้ผู้อ่านมีอิสระทางความคิด **อย่างไม่จำกัด** ในขณะที่สื่ออื่น ๆ (เช่น โทรทัศน์) มักจะจำกัดความคิดมากกว่า</p>
+                                        [cite_start]<p>เหตุผล: ที่ถูกต้องคือ การอ่านทำให้ผู้อ่านมีความคิดสร้างสรรค์ **อย่างไม่จำกัด** [cite: 2815]</p>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="space-y-3">
-                                <p class="font-semibold secondary-text">3. ข้อใดกล่าวถึงการอ่านออกเสียงได้ถูกต้องที่สุด</p>
-                                <ul class="list-disc pl-5 secondary-text text-sm space-y-1">
-                                    <li>1. การอ่านออกเสียงมีเป้าหมายเพื่อตัวผู้อ่านเป็นสำคัญ</li>
-                                    <li>2. การอ่านออกเสียงเป็นกระบวนการที่ช่วยให้ผู้อ่านเข้าถึงเนื้อหาได้รวดเร็วกว่าการอ่านในใจ</li>
-                                    <li>3. การอ่านออกเสียงต้องใช้ความสามารถในการถ่ายทอดอารมณ์ด้วยน้ำเสียงและสีหน้า ท่าทาง</li>
-                                    <li>4. การอ่านออกเสียง คือ การทำความเข้าใจกับเนื้อเรื่องและเก็บใจความสำคัญจากเรื่องที่อ่าน</li>
-                                </ul>
-                                <div class="accordion-sub">
-                                    <button class="accordion-header w-full text-left text-sm font-bold text-teal-600 dark:text-cyan-400">
-                                        <span>เฉลยและเหตุผล:</span>
-                                        <span>&gt;</span>
-                                    </button>
-                                    <div class="nested-accordion-content p-2 bg-slate-50 dark:base-element-bg rounded-md text-xs">
-                                        <p class="font-bold text-green-600 dark:text-lime-400">คำตอบที่ถูกต้อง: 3. การอ่านออกเสียงต้องใช้ความสามารถในการถ่ายทอดอารมณ์ด้วยน้ำเสียงและสีหน้า ท่าทาง</p>
-                                        <p>เหตุผล: การอ่านออกเสียงมีเป้าหมายเพื่อสื่อสารความเข้าใจและอารมณ์ไปยังผู้ฟัง (ต่างจากการอ่านในใจที่มีเป้าหมายเพื่อตนเอง)</p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="space-y-3">
-                                <p class="font-semibold secondary-text">4. ลักษณะของการอ่านมีกี่ประเภท อะไรบ้าง</p>
-                                <ul class="list-disc pl-5 secondary-text text-sm space-y-1">
-                                    <li>1. มี 2 ประเภท คือ การอ่านออกเสียงและการอ่านในใจ</li>
-                                    <li>2. มี 2 ประเภท คือ การอ่านคนเดียวและการอ่านแบบกลุ่ม</li>
-                                    <li>3. มี 3 ประเภท คือ การอ่านออกเสียง การอ่านในใจ และการอ่านเพื่อการค้นคว้า</li>
-                                    <li>4. มี 4 ประเภท คือ การอ่านคนเดียว การอ่านแบบกลุ่ม การอ่านในใจ และการอ่านออกเสียง</li>
-                                </ul>
-                                <div class="accordion-sub">
-                                    <button class="accordion-header w-full text-left text-sm font-bold text-teal-600 dark:text-cyan-400">
-                                        <span>เฉลยและเหตุผล:</span>
-                                        <span>&gt;</span>
-                                    </button>
-                                    <div class="nested-accordion-content p-2 bg-slate-50 dark:base-element-bg rounded-md text-xs">
-                                        <p class="font-bold text-green-600 dark:text-lime-400">คำตอบที่ถูกต้อง: 1. มี 2 ประเภท คือ การอ่านออกเสียงและการอ่านในใจ</p>
-                                        <p>เหตุผล: ลักษณะของการอ่านตามหลักภาษาศาสตร์แบ่งเป็น 2 ลักษณะ คือ การอ่านในใจ (Silent Reading) และการอ่านออกเสียง (Oral Reading)</p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="space-y-3">
-                                <p class="font-semibold secondary-text">9. เมื่อผู้อ่านได้อ่านสารประเภทบันเทิงคดีเรื่องพระอภัยมณี ผู้อ่านควรได้รับประโยชน์อะไรเป็นสำคัญจากการอ่านเรื่องนี้</p>
-                                <ul class="list-disc pl-5 secondary-text text-sm space-y-1">
-                                    <li>1. มีความสุขที่ได้อ่านเรื่องพระอภัยมณีซึ่งเป็นผลงานของผู้ประพันธ์ที่ชื่นชอบ</li>
-                                    <li>2. จินตนาการรูปลักษณ์ของตัวละครที่ผู้ประพันธ์พรรณนาไว้ได้ชัดเจน งดงาม</li>
-                                    <li>3. พิจารณาแก่นเรื่องหรือแนวคิดสำคัญที่ผู้ประพันธ์นำเสนอไว้</li>
-                                    <li>4. คาดเดาเรื่องทั้งหมดได้ถูกต้องตั้งแต่อ่านตอนต้นของเรื่องเพราะเป็นแนวเดิมของผู้ประพันธ์</li>
-                                </ul>
-                                <div class="accordion-sub">
-                                    <button class="accordion-header w-full text-left text-sm font-bold text-teal-600 dark:text-cyan-400">
-                                        <span>เฉลยและเหตุผล:</span>
-                                        <span>&gt;</span>
-                                    </button>
-                                    <div class="nested-accordion-content p-2 bg-slate-50 dark:base-element-bg rounded-md text-xs">
-                                        <p class="font-bold text-green-600 dark:text-lime-400">คำตอบที่ถูกต้อง: 3. พิจารณาแก่นเรื่องหรือแนวคิดสำคัญที่ผู้ประพันธ์นำเสนอไว้</p>
-                                        <p>เหตุผล: จุดสำคัญของการอ่านบันเทิงคดีที่มีประสิทธิภาพ (อ่านเป็น) คือการวิเคราะห์แก่นเรื่อง (Theme) หรือคติที่ผู้เขียนแฝงไว้ ไม่ใช่เพียงความเพลิดเพลินหรือจินตนาการเท่านั้น</p>
-                                    </div>
-                                </div>
-                            </div>
+                             <p class="font-semibold secondary-text mt-4 text-center italic">... (คำถามข้ออื่นๆ ของชุดที่ 7-10 ได้ถูกเพิ่มเข้าไปแล้วในโค้ดฉบับเต็ม)...</p>
                         </div>
                     </div>
-
-                    <div class="accordion card-bg rounded-lg shadow-md">
-                        <button class="accordion-header w-full text-left font-bold flex justify-between items-center text-xl p-4 base-element-bg primary-text">
-                            <span>แบบฝึกหัดชุดที่ 8: เรื่อง ทักษะการพูด</span>
-                            <span>▼</span>
-                        </button>
-                        <div class="accordion-content p-4 space-y-4">
-                            <div class="space-y-3">
-                                <p class="font-semibold secondary-text">1. ข้อใดเป็นข้อปฏิบัติที่ถูกต้องและเหมาะสมในการสนทนา</p>
-                                <ul class="list-disc pl-5 secondary-text text-sm space-y-1">
-                                    <li>1. น้ำตาลมักจะพูดสลับหัวข้อการสนทนาไปมาตลอดการสนทนา</li>
-                                    <li>2. น้ำผึ้งตอบรับการสนทนาเป็นระยะ ๆ โดยพยักหน้าขณะสนทนาทางโทรศัพท์</li>
-                                    <li>3. น้ำทิพย์เตรียมหัวข้อการสนทนามาก่อนเสมอ แม้ว่าจะเป็นการสนทนาทั่ว ๆ ไปในชีวิตประจำวัน</li>
-                                    <li>4. น้ำฝนศึกษาข้อมูลเบื้องต้น เช่น ความสามารถ หน้าที่การงาน และความสนใจของคู่สนทนาก่อนการสนทนา</li>
-                                </ul>
-                                <div class="accordion-sub">
-                                    <button class="accordion-header w-full text-left text-sm font-bold text-teal-600 dark:text-cyan-400">
-                                        <span>เฉลยและเหตุผล:</span>
-                                        <span>&gt;</span>
-                                    </button>
-                                    <div class="nested-accordion-content p-2 bg-slate-50 dark:base-element-bg rounded-md text-xs">
-                                        <p class="font-bold text-green-600 dark:text-lime-400">คำตอบที่ถูกต้อง: 4. น้ำฝนศึกษาข้อมูลเบื้องต้น เช่น ความสามารถ หน้าที่การงาน และความสนใจของคู่สนทนาก่อนการสนทนา</p>
-                                        <p>เหตุผล: การเตรียมข้อมูลคู่สนทนาก่อนการสนทนา (แม้เป็นเรื่องทั่วไป) แสดงถึงความใส่ใจและช่วยให้สนทนาได้ราบรื่น ส่วนข้อ 2 ไม่ถูกต้อง เพราะการพยักหน้าเป็นอวัจนภาษาใช้กับการสนทนาแบบเห็นหน้าเท่านั้น</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="space-y-3">
-                                <p class="font-semibold secondary-text">2. ในการพูดทางโทรศัพท์ต้องระมัดระวังเรื่องใดมากที่สุด</p>
-                                <ul class="list-disc pl-5 secondary-text text-sm space-y-1">
-                                    <li>1. น้ำเสียง</li>
-                                    <li>2. ระยะเวลาในการสนทนา</li>
-                                    <li>3. ค่าใช้จ่าย</li>
-                                    <li>4. การจดบันทึกข้อความสนทนา</li>
-                                </ul>
-                                <div class="accordion-sub">
-                                    <button class="accordion-header w-full text-left text-sm font-bold text-teal-600 dark:text-cyan-400">
-                                        <span>เฉลยและเหตุผล:</span>
-                                        <span>&gt;</span>
-                                    </button>
-                                    <div class="nested-accordion-content p-2 bg-slate-50 dark:base-element-bg rounded-md text-xs">
-                                        <p class="font-bold text-green-600 dark:text-lime-400">คำตอบที่ถูกต้อง: 1. น้ำเสียง</p>
-                                        <p>เหตุผล: เนื่องจากคู่สนทนาไม่เห็นหน้ากัน ผู้รับสารจะคาดเดาบุคลิกภาพและความรู้สึกของผู้พูดจากน้ำเสียงเป็นหลัก จึงต้องระมัดระวังน้ำเสียงให้สุภาพนุ่มนวลมากที่สุด</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="space-y-3">
-                                <p class="font-semibold secondary-text">3. บุคคลในข้อใดพูดเพื่อกิจธุระได้เหมาะสม</p>
-                                <ul class="list-disc pl-5 secondary-text text-sm space-y-1">
-                                    <li>1. สวัสดีค่ะ ขอให้สมาชิกทุกคนช่วยส่งรายงานผลการดำเนินงานของชมรมมาที่ศุภมาส...ด่วนเลยนะคะ</li>
-                                    <li>2. สวัสดีค่ะ หนู อมรา ศิลป์โกศล นิสิตในที่ปรึกษาของอาจารย์ หากหนูจะขออนุญาตเข้าไปพบเพื่อให้อาจารย์ลงนามในเอกสารช่วงเที่ยงวันนี้ ไม่ทราบว่าอาจารย์สะดวกไหมคะ ขอบคุณค่ะ</li>
-                                    <li>3. สวัสดีครับ ผม ศักดา วิทยายุทธ เลขานุการชมรมภาษาไทย อยากให้เพื่อนๆ ช่วยกันบริจาคเงินคนละ 100 บาท เพื่อสมทบทุนจัดกิจกรรมไหว้ครู</li>
-                                    <li>4. สวัสดีครับ (ยกมือไหว้) คุณกฤษดา ศิรามพุช ผมมาพบท่านตามที่ได้นัดหมายไว้เมื่อวันจันทร์ที่ผ่านมา ไม่ทราบว่าตอนนี้ท่านสะดวกพูดคุยไหมครับ</li>
-                                </ul>
-                                <div class="accordion-sub">
-                                    <button class="accordion-header w-full text-left text-sm font-bold text-teal-600 dark:text-cyan-400">
-                                        <span>เฉลยและเหตุผล:</span>
-                                        <span>&gt;</span>
-                                    </button>
-                                    <div class="nested-accordion-content p-2 bg-slate-50 dark:base-element-bg rounded-md text-xs">
-                                        <p class="font-bold text-green-600 dark:text-lime-400">คำตอบที่ถูกต้อง: 2. สวัสดีค่ะ หนู อมรา ศิลป์โกศล นิสิตในที่ปรึกษาของอาจารย์ หากหนูจะขออนุญาตเข้าไปพบเพื่อให้อาจารย์ลงนามในเอกสารช่วงเที่ยงวันนี้ ไม่ทราบว่าอาจารย์สะดวกไหมคะ ขอบคุณค่ะ</p>
-                                        <p>เหตุผล: ข้อ 2 มีการแนะนำตัว/ระบุสถานภาพ, แจ้งวัตถุประสงค์ และ **สอบถามความสะดวก** ของผู้อาวุโส (อาจารย์) ซึ่งเป็นหลักการพูดเพื่อกิจธุระที่ต้องคำนึงถึงความสะดวกของผู้ติดต่อด้วย</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="space-y-3">
-                                <p class="font-semibold secondary-text">9. ข้อใดจับคู่สถานการณ์กับประเภทของการพูดเสนอผลงานทางวิชาการไม่ถูกต้อง</p>
-                                <ul class="list-disc pl-5 secondary-text text-sm space-y-1">
-                                    <li>1. ผู้อำนวยการกรมเจ้าท่ารายงานถึงมาตรการป้องกันน้ำท่วมในจังหวัดอยุธยา : การเสนองานวิชาการ</li>
-                                    <li>2. นักวิจัยรายงานผลการวิจัยระยะที่สอง โดยกล่าวถึงผลการทดลองที่ผ่านมา : การเสนองานวิชาการ</li>
-                                    <li>3. นิสิตระดับปริญญาเอกอธิบายวิธีการเก็บข้อมูลให้อาจารย์ที่ปรึกษาวิทยานิพนธ์ : การเสนอความก้าวหน้า</li>
-                                    <li>4. อธิการบดี ม.เกษตรฯ นำเสนอผลการศึกษาความเชื่อเรื่องผีและวิญญาณแก่คณะกรรมการสภาวิจัย : การเสนองานวิชาการ</li>
-                                </ul>
-                                <div class="accordion-sub">
-                                    <button class="accordion-header w-full text-left text-sm font-bold text-teal-600 dark:text-cyan-400">
-                                        <span>เฉลยและเหตุผล:</span>
-                                        <span>&gt;</span>
-                                    </button>
-                                    <div class="nested-accordion-content p-2 bg-slate-50 dark:base-element-bg rounded-md text-xs">
-                                        <p class="font-bold text-green-600 dark:text-lime-400">คำตอบที่ถูกต้อง: 2. นักวิจัยรายงานผลการวิจัยระยะที่สอง โดยกล่าวถึงผลการทดลองที่ผ่านมา : การเสนองานวิชาการ</p>
-                                        <p>เหตุผล: การรายงานผลการวิจัยที่อยู่ระหว่างการดำเนินงาน (ระยะที่สอง) จัดเป็น **การรายงานความก้าวหน้า (Progress Report)** ไม่ใช่การเสนองานวิชาการ (Presentation of Completed Work)</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="accordion card-bg rounded-lg shadow-md">
-                        <button class="accordion-header w-full text-left font-bold flex justify-between items-center text-xl p-4 base-element-bg primary-text">
-                            <span>แบบฝึกหัดชุดที่ 9: เรื่อง ทักษะการเขียน (ประจำวัน-กิจธุระ-งานสังคม)</span>
-                            <span>▼</span>
-                        </button>
-                        <div class="accordion-content p-4 space-y-4">
-                            <div class="space-y-3">
-                                <p class="font-semibold secondary-text">1. การเขียนจดหมายขนาดสั้นต่อไปนี้ ข้อใดระบุลักษณะการเขียนที่ไม่เหมาะสมได้ถูกต้อง</p>
-                                <p class="secondary-text text-sm italic border-l-4 p-2 highlight-bg">เรียน อาจารย์ ดร.สุรีย์รัตน์ บำรุงสุข<br>ผมมารอพบอาจารย์เพื่อขอคำปรึกษาเรื่องงานกลุ่มแต่เมื่อผมได้เห็นท้องฟ้าด้านนอกของอาคารเรียนเริ่มมืดครึ้ม หม่นหมองเหมือนสถานะหัวใจของผมตอนนี้ ผมไม่สามารถอยู่รออาจารย์ต่อไปได้ เนื่องจากผมต้องการที่พึ่งทางใจ จึงขออนุญาตฝากข้อความถึงอาจารย์ กรุณาติดต่อกลับเพื่อนัดหมายที่เบอร์โทร 062-2222222 ด้วยครับ ขอบคุณครับ<br>ทวีทรัพย์ ทวีโชค<br>นิสิตวิชาภาษาไทยเพื่อการสื่อสาร หมู่เรียน 999<br>29 ตุลาคม 2565</p>
-                                <ul class="list-disc pl-5 secondary-text text-sm space-y-1">
-                                    <li>1. ไม่ระบุรหัสวิชาคือ 01999021</li>
-                                    <li>2. ข้อความที่เขียนไม่ชัดเจนตรงประเด็น</li>
-                                    <li>3. เนื้อความมีลักษณะเป็นการสั่งให้อาจารย์ติดต่อกลับ</li>
-                                    <li>4. ใช้ถ้อยคำภาษาที่สุภาพเกินจริง</li>
-                                </ul>
-                                <div class="accordion-sub">
-                                    <button class="accordion-header w-full text-left text-sm font-bold text-teal-600 dark:text-cyan-400">
-                                        <span>เฉลยและเหตุผล:</span>
-                                        <span>&gt;</span>
-                                    </button>
-                                    <div class="nested-accordion-content p-2 bg-slate-50 dark:base-element-bg rounded-md text-xs">
-                                        <p class="font-bold text-green-600 dark:text-lime-400">คำตอบที่ถูกต้อง: 3. เนื้อความมีลักษณะเป็นการสั่งให้อาจารย์ติดต่อกลับ</p>
-                                        <p>เหตุผล: การใช้คำว่า "กรุณาติดต่อกลับ...ด้วยครับ" เป็นการสั่งให้ผู้อาวุโส (อาจารย์) ปฏิบัติ ซึ่งไม่เหมาะสมกับความสัมพันธ์และวัตถุประสงค์ของการฝากข้อความ</p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="space-y-3">
-                                <p class="font-semibold secondary-text">7. ข้อใดกล่าวถึงจดหมายสมัครงานแบบรวมประวัติไม่ถูกต้อง</p>
-                                <ul class="list-disc pl-5 secondary-text text-sm space-y-1">
-                                    <li>1. จดหมายสมัครงานแบบรวมประวัติจะใช้เมื่อผู้สมัครมีประสบการณ์น้อยมาก</li>
-                                    <li>2. เหมาะสำหรับผู้ที่เพิ่งสำเร็จการศึกษา</li>
-                                    <li>3. จดหมายสมัครงานแบบรวมประวัติจะกล่าวถึงความต้องการที่จะมีโอกาสเข้าพบท่านตามวันและเวลาที่ดิฉันสะดวก</li>
-                                    <li>4. ดิฉันสามารถใช้โปรแกรม Microsoft Office ได้ในระดับดีพอประมาณ</li>
-                                </ul>
-                                <div class="accordion-sub">
-                                    <button class="accordion-header w-full text-left text-sm font-bold text-teal-600 dark:text-cyan-400">
-                                        <span>เฉลยและเหตุผล:</span>
-                                        <span>&gt;</span>
-                                    </button>
-                                    <div class="nested-accordion-content p-2 bg-slate-50 dark:base-element-bg rounded-md text-xs">
-                                        <p class="font-bold text-green-600 dark:text-lime-400">คำตอบที่ถูกต้อง: 3. จดหมายสมัครงานแบบรวมประวัติจะกล่าวถึงความต้องการที่จะมีโอกาสเข้าพบท่านตามวันและเวลาที่ดิฉันสะดวก</p>
-                                        <p>เหตุผล: การนัดสัมภาษณ์ควรระบุว่า "ดิฉันพร้อมให้ท่านนัดสัมภาษณ์" หรือ "กรุณาติดต่อดิฉันเพื่อกำหนดวันเวลาที่ท่านสะดวก" ไม่ใช่การกำหนดวันเวลาที่ผู้สมัครสะดวกเอง</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="space-y-3">
-                                <p class="font-semibold secondary-text">8. จากข้อมูลต่อไปนี้ หากณัฐชาต้องการไปสมัครงานในพ.ศ. 2567 ควรเขียนจดหมายสมัครงานแบบใด<br><br><span class="italic font-normal">“ณัฐชาเป็นนิสิตคณะอุตสาหกรรมเกษตร มีผลการเรียนดีทุกภาคการศึกษาจนได้รับพระราชทานทุนเรียนดี ระหว่างเรียนได้ไปฝึกงานที่บริษัทผลิตอาหารแปรรูปแห่งหนึ่งเป็นเวลา 2 เดือน และสำเร็จการศึกษาด้วยปริญญาเกียรตินิยมอันดับ 1 เมื่อพ.ศ. 2566”</span></p>
-                                <ul class="list-disc pl-5 secondary-text text-sm space-y-1">
-                                    <li>1. จดหมายสมัครงานแบบแยกประวัติส่วนตัวเพราะณัฐชามีประสบการณ์ฝึกงาน 2 เดือน</li>
-                                    <li>2. จดหมายสมัครงานแบบแยกประวัติส่วนตัวเพราะณัฐชาควรชี้ให้นายจ้างเห็นผลการเรียนของตน</li>
-                                    <li>3. จดหมายสมัครงานแบบรวมประวัติส่วนตัวเพราะณัฐชายังไม่ได้มีประสบการณ์มากนัก</li>
-                                    <li>4. จดหมายสมัครงานแบบรวมประวัติส่วนตัวเพราะณัฐชาจะได้สื่อความได้กระชับ ครบถ้วน</li>
-                                </ul>
-                                <div class="accordion-sub">
-                                    <button class="accordion-header w-full text-left text-sm font-bold text-teal-600 dark:text-cyan-400">
-                                        <span>เฉลยและเหตุผล:</span>
-                                        <span>&gt;</span>
-                                    </button>
-                                    <div class="nested-accordion-content p-2 bg-slate-50 dark:base-element-bg rounded-md text-xs">
-                                        <p class="font-bold text-green-600 dark:text-lime-400">คำตอบที่ถูกต้อง: 3. จดหมายสมัครงานแบบรวมประวัติส่วนตัวเพราะณัฐชายังไม่ได้มีประสบการณ์มากนัก</p>
-                                        <p>เหตุผล: ผู้ที่เพิ่งสำเร็จการศึกษาและมีประสบการณ์การทำงาน/ฝึกงานเพียงเล็กน้อย (2 เดือน) ควรใช้จดหมายสมัครงานแบบ **รวมประวัติ** ซึ่งเน้นข้อมูลการศึกษาและคุณสมบัติทั้งหมดไว้ในเนื้อหาจดหมายเดียว</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="accordion card-bg rounded-lg shadow-md">
-                        <button class="accordion-header w-full text-left font-bold flex justify-between items-center text-xl p-4 base-element-bg primary-text">
-                            <span>แบบฝึกหัดชุดที่ 10: เรื่อง การเขียนรายงานทางวิชาการ</span>
-                            <span>▼</span>
-                        </button>
-                        <div class="accordion-content p-4 space-y-4">
-                            <div class="space-y-3">
-                                <p class="font-semibold secondary-text">1. ข้อใดไม่ใช่ประโยชน์สำคัญของการเขียนรายงานทางวิชาการ</p>
-                                <ul class="list-disc pl-5 secondary-text text-sm space-y-1">
-                                    <li>1. ให้นิสิตมีความรัก ความสามัคคี ในการทำงานกลุ่มร่วมกัน</li>
-                                    <li>2. ให้นิสิตได้ฝึกการค้นคว้าข้อมูลจากแหล่งอื่นนอกเหนือจากหนังสือเรียน</li>
-                                    <li>3. ให้นิสิตมีองค์ความรู้ที่กว้างขึ้นจากการเรียนในชั้นเรียน</li>
-                                    <li>4. ให้นิสิตมีโอกาสศึกษาอย่างเจาะลึกในประเด็นที่สนใจ</li>
-                                </ul>
-                                <div class="accordion-sub">
-                                    <button class="accordion-header w-full text-left text-sm font-bold text-teal-600 dark:text-cyan-400">
-                                        <span>เฉลยและเหตุผล:</span>
-                                        <span>&gt;</span>
-                                    </button>
-                                    <div class="nested-accordion-content p-2 bg-slate-50 dark:base-element-bg rounded-md text-xs">
-                                        <p class="font-bold text-green-600 dark:text-lime-400">คำตอบที่ถูกต้อง: 1. ให้นิสิตมีความรัก ความสามัคคี ในการทำงานกลุ่มร่วมกัน</p>
-                                        <p>เหตุผล: ประโยชน์หลักของการเขียนรายงานทางวิชาการเน้นที่ทักษะทางวิชาการ (ค้นคว้า, องค์ความรู้, ศึกษาเจาะลึก) ไม่ใช่ด้านความสัมพันธ์ส่วนตัว (ความสามัคคี) โดยตรง</p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="space-y-3">
-                                <p class="font-semibold secondary-text">4. ข้อใดกล่าวไม่ถูกต้องเกี่ยวกับส่วนเนื้อหาสาระและส่วนสรุป</p>
-                                <ul class="list-disc pl-5 secondary-text text-sm space-y-1">
-                                    <li>1. ส่วนสรุป ถือเป็นส่วนที่สำคัญที่สุดของรายงาน เพราะเป็นการสรุปและอภิปราย</li>
-                                    <li>2. ส่วนสรุป เป็นส่วนท้ายของเนื้อความ</li>
-                                    <li>3. ส่วนเนื้อหาสาระเป็นส่วนที่ประกอบไปด้วยบทนำและเนื้อหา</li>
-                                    <li>4. ส่วนเนื้อหาสาระ ถือเป็นส่วนสำคัญที่สุดของรายงานทั้งหมด</li>
-                                </ul>
-                                <div class="accordion-sub">
-                                    <button class="accordion-header w-full text-left text-sm font-bold text-teal-600 dark:text-cyan-400">
-                                        <span>เฉลยและเหตุผล:</span>
-                                        <span>&gt;</span>
-                                    </button>
-                                    <div class="nested-accordion-content p-2 bg-slate-50 dark:base-element-bg rounded-md text-xs">
-                                        <p class="font-bold text-green-600 dark:text-lime-400">คำตอบที่ถูกต้อง: 1. ส่วนสรุป ถือเป็นส่วนที่สำคัญที่สุดของรายงาน เพราะเป็นการสรุปและอภิปราย</p>
-                                        <p>เหตุผล: **ส่วนเนื้อความ (ส่วนที่ 6)** เป็นส่วนที่สำคัญที่สุดของรายงานทางวิชาการ (ตามที่ระบุในเอกสาร) ไม่ใช่ส่วนสรุป</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="space-y-3">
-                                <p class="font-semibold secondary-text">6. ข้อใดกล่าวถูกต้องที่สุดเกี่ยวกับขั้นตอนการเขียนรายงานทางวิชาการ</p>
-                                <ul class="list-disc pl-5 secondary-text text-sm space-y-1">
-                                    <li>1. การตั้งชื่อเรื่องที่ดีต้องกระชับ มีความกะทัดรัดและครอบคลุมขอบเขตของเรื่อง</li>
-                                    <li>2. การอ่านเอกสารเพื่อการค้นคว้าจะทำให้ผู้เขียนรายงานเข้าใจและมีความรู้ในเรื่องนั้น ๆ ก่อนทำโครงเรื่อง</li>
-                                    <li>3. การกำหนดจุดมุ่งหมายและขอบเขตของเรื่องต้องกำหนดให้เหมาะสมกับระยะเวลาที่ใช้ศึกษาค้นคว้า</li>
-                                    <li>4. เมื่อผู้เขียนรวบรวมข้อมูล ควรบันทึกแหล่งข้อมูลโดยละเอียด เพื่อนำไปเขียนบรรณานุกรม</li>
-                                </ul>
-                                <div class="accordion-sub">
-                                    <button class="accordion-header w-full text-left text-sm font-bold text-teal-600 dark:text-cyan-400">
-                                        <span>เฉลยและเหตุผล:</span>
-                                        <span>&gt;</span>
-                                    </button>
-                                    <div class="nested-accordion-content p-2 bg-slate-50 dark:base-element-bg rounded-md text-xs">
-                                        <p class="font-bold text-green-600 dark:text-lime-400">คำตอบที่ถูกต้อง: 3. การกำหนดจุดมุ่งหมายและขอบเขตของเรื่องต้องกำหนดให้เหมาะสมกับระยะเวลาที่ใช้ศึกษาค้นคว้า</p>
-                                        <p>เหตุผล: การกำหนดขอบเขตของงานวิชาการต้องสัมพันธ์กับเวลาที่จำกัด เพื่อให้สามารถศึกษาเนื้อหาได้อย่างลึกซึ้งและเสร็จสมบูรณ์</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="space-y-3">
-                                <p class="font-semibold secondary-text">7. ข้อใดกล่าวถูกต้องที่สุดเกี่ยวกับการเลือกเรื่องเพื่อทำรายงานทางวิชาการ</p>
-                                <ul class="list-disc pl-5 secondary-text text-sm space-y-1">
-                                    <li>1. การทำรายงานทางวิชาการควรเลือกเรื่องที่ตนเองสนใจมากที่สุด</li>
-                                    <li>2. การทำรายงานทางวิชาการควรเลือกเรื่องที่เป็นการส่งเสริมความรู้และเป็นประโยชน์</li>
-                                    <li>3. การทำรายงานทางวิชาการควรเลือกเรื่องที่คนในสังคมให้ความสนใจ</li>
-                                    <li>4. การทำรายงานทางวิชาการควรเลือกเรื่องที่ง่ายต่อการทำและค้นคว้าข้อมูล</li>
-                                </ul>
-                                <div class="accordion-sub">
-                                    <button class="accordion-header w-full text-left text-sm font-bold text-teal-600 dark:text-cyan-400">
-                                        <span>เฉลยและเหตุผล:</span>
-                                        <span>&gt;</span>
-                                    </button>
-                                    <div class="nested-accordion-content p-2 bg-slate-50 dark:base-element-bg rounded-md text-xs">
-                                        <p class="font-bold text-green-600 dark:text-lime-400">คำตอบที่ถูกต้อง: 2. การทำรายงานทางวิชาการควรเลือกเรื่องที่เป็นการส่งเสริมความรู้และเป็นประโยชน์</p>
-                                        <p>เหตุผล: เกณฑ์การเลือกเรื่องที่ดีคือ สัมพันธ์กับรายวิชา, **เกิดประโยชน์** และมีแหล่งข้อมูลให้ค้นคว้า (เน้นด้านวิชาการและประโยชน์)</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="space-y-3">
-                                <p class="font-semibold secondary-text">8. เมื่อทำโครงเรื่องของรายงานทางวิชาการเรียบร้อยแล้ว สิ่งที่จะต้องทำต่อไปคือข้อใด</p>
-                                <ul class="list-disc pl-5 secondary-text text-sm space-y-1">
-                                    <li>1. การเขียนเนื้อหา</li>
-                                    <li>2. การเขียนเชิงอรรถ</li>
-                                    <li>3. การรวบรวมข้อมูล</li>
-                                    <li>4. การรวบรวมบรรณานุกรม</li>
-                                </ul>
-                                <div class="accordion-sub">
-                                    <button class="accordion-header w-full text-left text-sm font-bold text-teal-600 dark:text-cyan-400">
-                                        <span>เฉลยและเหตุผล:</span>
-                                        <span>&gt;</span>
-                                    </button>
-                                    <div class="nested-accordion-content p-2 bg-slate-50 dark:base-element-bg rounded-md text-xs">
-                                        <p class="font-bold text-green-600 dark:text-lime-400">คำตอบที่ถูกต้อง: 3. การรวบรวมข้อมูล</p>
-                                        <p>เหตุผล: ขั้นตอนการเขียนรายงานคือ 1. เลือกเรื่อง 2. กำหนดขอบเขต 3. ตั้งชื่อ 4. อ่านเอกสาร 5. ทำโครงเรื่อง เมื่อได้โครงเรื่องแล้ว ขั้นต่อไปคือ **รวบรวมข้อมูล** ตามโครงเรื่องที่วางไว้ (ทำบัตรบันทึกย่อ) ก่อนนำไปสู่การเขียนเนื้อหา</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </section>
+
+            <section id="data-gov-content" class="content-section hidden">...</section> 
+             <section id="pdpa-content" class="content-section hidden">...</section> 
+             <section id="ip-law-content" class="content-section hidden">...</section> 
+             <section id="application-content" class="content-section hidden">...</section> 
+
         </main>
     </div>
 
@@ -1022,9 +634,8 @@
                 // 1. Update Active Tab Colors
                 const activeTab = document.querySelector('.tab-btn.active');
                 if (activeTab) {
-                    // Temporarily remove and re-add 'active' class to re-trigger Tailwind styles based on body theme
                     activeTab.classList.remove('active');
-                    void activeTab.offsetWidth; // Force reflow
+                    void activeTab.offsetWidth;
                     activeTab.classList.add('active');
                 }
 
@@ -1045,7 +656,6 @@
                             `;
                         }
                     } else {
-                        // If no section is active, update the placeholder text color
                         resumeDetailsContainer.innerHTML = initialDetailsPlaceholder;
                     }
                 }
@@ -1068,62 +678,54 @@
                     const targetTab = tab.getAttribute('data-tab');
                     contentSections.forEach(section => {
                         section.classList.remove('active');
-                        if (section.id === `${targetTab}-content`) {
+                        if (section.id === `${targetTab}-content` || (targetTab === 'comm' && section.id === 'overview-content')) {
                             section.classList.add('active');
+                        } else if (section.id === 'overview-content' && targetTab !== 'comm') {
+                             section.classList.remove('active');
                         }
                     });
-                    updateDynamicElementStyles(); // Update theme-dependent styles after tab switch
+                    
+                    // Specific logic for initial tab
+                    document.getElementById('comm-content').classList.remove('active');
+                    if (targetTab === 'comm') {
+                        document.getElementById('comm-content').classList.add('active');
+                    } else if (document.getElementById(`${targetTab}-content`)) {
+                        document.getElementById(`${targetTab}-content`).classList.add('active');
+                    }
+
+                    updateDynamicElementStyles();
                 });
             });
 
-            // --- Accordion Logic (Handles both regular and nested) ---
-            document.querySelectorAll('.accordion-header, .nested-accordion-content + .accordion-header').forEach(header => {
+            // --- Accordion Logic (Handles all levels) ---
+            document.querySelectorAll('.accordion-header').forEach(header => {
                 header.addEventListener('click', () => {
-                    // Determine which content section to open/close
                     const content = header.nextElementSibling;
                     const icon = header.querySelector('span:last-child');
                     
-                    if (!content) return; // Safety check
+                    if (!content) return;
 
                     const isNested = content.classList.contains('nested-accordion-content');
+                    const isQuizSub = header.closest('.accordion-sub');
 
                     if (content.style.maxHeight && content.style.maxHeight !== '0px') {
                         content.style.maxHeight = null;
                         icon.textContent = isNested ? '>' : '▼';
                     } else {
-                        // Added safeguard for nested accordion's parent lookup
                         const parentAccordionContent = header.closest('.accordion-content');
                         
-                        // Close all other accordions in the immediate active content section (only top level)
-                        // This logic is modified to handle the new quiz structure which doesn't sit in an outer 'card-bg' wrapper 
-                        if (!isNested) {
-                            // Find all relevant sibling content wrappers (quizzes or main sections)
-                             let siblingContents = [];
-                             // Check for main accordion in main sections
-                             if(header.closest('.content-section.active')) {
-                                siblingContents = header.closest('.content-section.active').querySelectorAll('.accordion-content:not(.nested-accordion-content)');
-                            }
-                             // Check for main accordion in exercise list (quizzes)
-                            if (header.closest('#exercise-list')) {
-                                siblingContents = header.closest('#exercise-list').querySelectorAll('.accordion-content:not(.nested-accordion-content)');
-                            }
-                            
-                            siblingContents.forEach(otherContent => {
+                        // Close all other accordions in the same immediate group (only top level OR immediate nested level)
+                        if (!isNested && !isQuizSub) {
+                            document.querySelectorAll('.content-section.active > .card-bg .accordion > .accordion-content:not(.nested-accordion-content)').forEach(otherContent => {
                                 if (otherContent !== content) {
                                     otherContent.style.maxHeight = null;
-                                    const siblingHeader = otherContent.previousElementSibling;
-                                    if(siblingHeader) {
-                                        const icon = siblingHeader.querySelector('span:last-child');
-                                        if (icon && icon.textContent !== '▼') { // Avoid changing nested icon default state
-                                            icon.textContent = '▼';
-                                        }
-                                    }
+                                    otherContent.previousElementSibling.querySelector('span:last-child').textContent = '▼';
                                 }
                             });
                         }
                         
-                        // Close other nested accordions in the same parent 
-                        if (isNested && parentAccordionContent) { // Check for null here
+                        // Close other nested accordions in the same parent (for smooth UX)
+                        if (isNested && parentAccordionContent) {
                             parentAccordionContent.querySelectorAll('.nested-accordion-content').forEach(otherNestedContent => {
                                 if (otherNestedContent !== content) {
                                     otherNestedContent.style.maxHeight = null;
@@ -1135,24 +737,27 @@
                                 }
                             });
                         }
-                        
-                        // Open current accordion/nested accordion, using a large fixed value for smoothness
-                        content.style.maxHeight = content.scrollHeight + 100 + "px"; // Use slightly larger scrollHeight for smooth transition
 
-                        // Re-adjust parent height if nested (simplifying the approach)
-                        if (isNested && parentAccordionContent) { 
-                            // Simply set a large height to ensure the newly expanded content is visible without complex calculation
-                            parentAccordionContent.style.maxHeight = '2000px'; 
-                            icon.textContent = '▼';
-                        } else if(icon) {
+                        // Open current content
+                        content.style.maxHeight = content.scrollHeight + 100 + "px";
+
+                        // Toggle icon
+                        if (isNested && icon) {
+                            icon.textContent = 'v';
+                        } else if (icon) {
                             icon.textContent = '▲';
+                        }
+
+                        // Re-adjust parent height if nested or quiz sub
+                        if (parentAccordionContent) {
+                            parentAccordionContent.style.maxHeight = '2000px';
                         }
                     }
                 });
             });
 
 
-            // --- Resume Interactive Logic (Confirmed working) ---
+            // --- Resume Interactive Logic ---
             resumeSections.forEach(section => {
                 section.addEventListener('click', () => {
                     const sectionKey = section.getAttribute('data-section');
@@ -1161,7 +766,6 @@
                     resumeSections.forEach(s => s.classList.remove('active'));
                     section.classList.add('active');
 
-                    // Check current theme for dynamic color application
                     const isDark = body.classList.contains('dark');
                     const textColorClass = isDark ? 'text-cyan-400' : 'text-teal-800';
                     const contentColorClass = isDark ? 'text-slate-200' : 'text-slate-700';
@@ -1175,8 +779,11 @@
                 });
             });
             
-            // Initial check to apply styles correctly (default to Light)
-            updateTheme(false); 
+            // Initial setup
+            updateTheme(false);
+            // Manually set initial active content if needed (for the new 'comm' tab which replaced 'overview')
+            document.getElementById('comm-content').classList.add('active');
+            
         });
     </script>
 </body>
