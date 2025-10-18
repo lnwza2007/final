@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- Chosen Palette: Dynamic (Light: Stone/Teal, Dark: Gray/Cyan) -->
     <!-- Application Structure Plan: Multi-tab structure maintained, but each section is broken down into highly detailed, nested accordions. This deep-dive structure is chosen to accommodate the vast amount of specific, academic content (e.g., detailed steps for listening, speaking etiquette, and report writing components) while maintaining an organized, clean UI in a single SPA. Key interactions focus on exploring nested details. -->
-    <!-- Visualization & Content Choices: Content is organized into four main thematic tabs. Nested accordions are extensively used to manage content depth. Lists and sub-lists are used to present procedural information (e.g., 6 steps of command listening, 5 parts of a research report). No charts used, heavy reliance on text and list-based presentation for maximum information density and clarity. -->
+    <!-- Visualization & Content Choices: Content is organized into four main thematic tabs + a new "Exercise" tab. Nested accordions are extensively used to manage content depth. Lists and sub-lists are used to present procedural information (e.g., 6 steps of command listening, 5 parts of a research report). No charts used, heavy reliance on text and list-based presentation for maximum information density and clarity. -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
         body {
@@ -155,6 +155,7 @@
             <button class="tab-btn text-lg font-semibold py-3 px-6 border-b-4 border-transparent" data-tab="receptive">ทักษะการรับสาร (ฟัง/อ่าน)</button>
             <button class="tab-btn text-lg font-semibold py-3 px-6 border-b-4 border-transparent" data-tab="productive">ทักษะการส่งสาร (พูด/เขียน)</button>
             <button class="tab-btn text-lg font-semibold py-3 px-6 border-b-4 border-transparent" data-tab="application">การเขียนเพื่อกิจธุระ/วิชาการ</button>
+            <button class="tab-btn text-lg font-semibold py-3 px-6 border-b-4 border-transparent" data-tab="exercise">แบบฝึกหัดและเฉลย</button>
         </nav>
 
         <main>
@@ -451,16 +452,509 @@
                                 <li>ย่อหน้าสรุป: ความพร้อมในการให้สัมภาษณ์/เบอร์ติดต่อ</li>
                                 <li>คำลงท้าย (ขอแสดงความนับถือ) และลงชื่อ (ลายเซ็น + ชื่อในวงเล็บ)</li>
                             </ol>
-                            <h4 class="font-bold secondary-text mt-4">ส่วนประกอบของประวัติย่อ (Resume/CV):</h4>
-                            <ul class="list-disc pl-5 mt-2 space-y-1 secondary-text">
-                                <li>ข้อมูลส่วนตัว, ประวัติการศึกษา (เรียงจากล่าสุด), ประสบการณ์ทำงาน/กิจกรรมนอกหลักสูตร, ทักษะและความสามารถ, บุคคลอ้างอิง</li>
+                            <h4 class="font-bold secondary-text mt-4">สำรวจองค์ประกอบของประวัติย่อ:</h4>
+                            <ul class="list-disc pl-5 mt-2 space-y-1 secondary-text flex flex-wrap gap-2">
+                                <li class="resume-section base-element-bg p-2 rounded-md" data-section="personal">ข้อมูลส่วนตัว</li>
+                                <li class="resume-section base-element-bg p-2 rounded-md" data-section="education">ประวัติการศึกษา</li>
+                                <li class="resume-section base-element-bg p-2 rounded-md" data-section="experience">ประสบการณ์ทำงาน/กิจกรรม</li>
+                                <li class="resume-section base-element-bg p-2 rounded-md" data-section="skills">ทักษะและความสามารถ</li>
+                                <li class="resume-section base-element-bg p-2 rounded-md" data-section="references">บุคคลอ้างอิง</li>
                             </ul>
                         </div>
                          <!-- Resume Details Container (Must be outside the last card for correct layout in the previous step) -->
                          <div id="resume-details" class="mt-8 highlight-bg p-6 rounded-lg shadow-inner border-l-4 min-h-[150px]">
-                            <p class="secondary-text italic">เลือกหัวข้อจากประวัติย่อ (ด้านขวามือ) เพื่อดูคำแนะนำ...</p>
+                            <p class="secondary-text italic">เลือกหัวข้อจากประวัติย่อ (ด้านบน) เพื่อดูคำแนะนำ...</p>
                         </div>
                     </div>
+                </div>
+            </section>
+
+            <!-- TAB 5: แบบฝึกหัดและเฉลย -->
+            <section id="exercise-content" class="content-section">
+                <h2 class="text-3xl font-bold primary-text mb-6 text-center">แบบฝึกหัดทักษะภาษาไทย (พร้อมเฉลย)</h2>
+                <div class="space-y-6" id="exercise-list">
+                    
+                    <div class="accordion card-bg rounded-lg shadow-md">
+                        <button class="accordion-header w-full text-left font-bold flex justify-between items-center text-xl p-4 base-element-bg primary-text">
+                            <span>แบบฝึกหัดชุดที่ 6: เรื่อง ทักษะการฟัง</span>
+                            <span>▼</span>
+                        </button>
+                        <div class="accordion-content p-4 space-y-4">
+                            <div class="space-y-3">
+                                <p class="font-semibold secondary-text">1. ขั้นตอนการฟังอย่างมีประสิทธิภาพในข้อใดถือว่าเป็นประโยชน์สูงสุด</p>
+                                <ul class="list-disc pl-5 secondary-text text-sm space-y-1">
+                                    <li>1. นำไปใช้ประโยชน์</li>
+                                    <li>2. ตีความ</li>
+                                    <li>3. ประเมินค่า</li>
+                                    <li>4. จับประเด็น</li>
+                                </ul>
+                                <div class="accordion-sub">
+                                    <button class="accordion-header w-full text-left text-sm font-bold text-teal-600 dark:text-cyan-400">
+                                        <span>เฉลยและเหตุผล:</span>
+                                        <span>&gt;</span>
+                                    </button>
+                                    <div class="nested-accordion-content p-2 bg-slate-50 dark:base-element-bg rounded-md text-xs">
+                                        <p class="font-bold text-green-600 dark:text-lime-400">คำตอบที่ถูกต้อง: 1. นำไปใช้ประโยชน์</p>
+                                        <p>เหตุผล: ขั้นตอนสุดท้ายและสูงสุดของการฟังอย่างมีประสิทธิภาพคือ การนำเนื้อหา ข้อคิด หรือความรู้ที่ได้ไปประยุกต์ใช้ให้เกิดประโยชน์ในชีวิตประจำวัน ซึ่งเป็นเป้าหมายสูงสุดของการเรียนรู้</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-3">
+                                <p class="font-semibold secondary-text">2. พฤติกรรมใดที่สะท้อนว่าผู้ฟังสามารถวิเคราะห์เรื่องได้</p>
+                                <ul class="list-disc pl-5 secondary-text text-sm space-y-1">
+                                    <li>1. เล่าสาระสำคัญให้ผู้อื่นฟังได้ (จับประเด็นสำคัญ)</li>
+                                    <li>2. บอกได้ว่าเรื่องที่ฟังน่าเชื่อถือหรือไม่ (ประเมินค่า)</li>
+                                    <li>3. รู้ว่าผู้ส่งสารต้องการนำเสนออะไรแก่ผู้รับสาร (ตีความ)</li>
+                                    <li>4. บอกข้อเท็จจริง ข้อคิดเห็น ข้อความแสดงอารมณ์</li>
+                                </ul>
+                                <div class="accordion-sub">
+                                    <button class="accordion-header w-full text-left text-sm font-bold text-teal-600 dark:text-cyan-400">
+                                        <span>เฉลยและเหตุผล:</span>
+                                        <span>&gt;</span>
+                                    </button>
+                                    <div class="nested-accordion-content p-2 bg-slate-50 dark:base-element-bg rounded-md text-xs">
+                                        <p class="font-bold text-green-600 dark:text-lime-400">คำตอบที่ถูกต้อง: 4. บอกข้อเท็จจริง ข้อคิดเห็น ข้อความแสดงอารมณ์</p>
+                                        <p>เหตุผล: การวิเคราะห์คือการแยกแยะเนื้อหาออกเป็นส่วนย่อย ๆ เช่น การแยกแยะประเภทของสาร (ข้อเท็จจริง/ข้อคิดเห็น) ก่อนนำไปสู่การตีความหรือประเมินค่า</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-3">
+                                <p class="font-semibold secondary-text">3. เมื่อนิสิตฟังเพลง "คงไว้ได้แค่กลิ่น..." แล้วเข้าใจความหมายของคำว่า "กลิ่น" ว่าหมายถึง ความทรงจำในอดีตที่ยากจะลืมเลือน แสดงว่านิสิตอยู่ในขั้นใดของขั้นตอนการฟังอย่างมีประสิทธิภาพ</p>
+                                <ul class="list-disc pl-5 secondary-text text-sm space-y-1">
+                                    <li>1. ผู้ฟังวิเคราะห์เรื่อง</li>
+                                    <li>2. ผู้ฟังจับประเด็นสำคัญของเรื่อง</li>
+                                    <li>3. ผู้ฟังตีความเรื่อง</li>
+                                    <li>4. ผู้ฟังประเมินค่าเรื่อง</li>
+                                </ul>
+                                <div class="accordion-sub">
+                                    <button class="accordion-header w-full text-left text-sm font-bold text-teal-600 dark:text-cyan-400">
+                                        <span>เฉลยและเหตุผล:</span>
+                                        <span>&gt;</span>
+                                    </button>
+                                    <div class="nested-accordion-content p-2 bg-slate-50 dark:base-element-bg rounded-md text-xs">
+                                        <p class="font-bold text-green-600 dark:text-lime-400">คำตอบที่ถูกต้อง: 3. ผู้ฟังตีความเรื่อง</p>
+                                        <p>เหตุผล: การตีความคือการอธิบายความหมายที่ไม่ได้ตรงตามตัวอักษร (นัยประหวัด) แต่เชื่อมโยงความคิดที่แท้จริงของผู้ส่งสาร</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="space-y-3">
+                                <p class="font-semibold secondary-text">4. ข้อใดคือขั้นตอนการฟังสารประเภทโน้มน้าวใจที่ถูกต้อง</p>
+                                <ul class="list-disc pl-5 secondary-text text-sm space-y-1">
+                                    <li>1. จับใจความ, วิเคราะห์ข้อเท็จจริง/ข้อคิดเห็น, ตัดสินใจเชื่อ, นำไปปฏิบัติ</li>
+                                    <li>2. ฟังจบ, วิเคราะห์ความสมเหตุสมผล, ตัดสินใจเชื่อ/ปฏิบัติ, บันทึกสาระ</li>
+                                    <li>3. ฟังให้จบ, จับประเด็น, วิเคราะห์ความสมเหตุสมผล, ใช้วิจารณญาณตัดสิน</li>
+                                    <li>4. ฟังจนจบ, วิเคราะห์อารมณ์ผู้พูด, ใช้วิจารณญาณ, นำไปใช้ประโยชน์</li>
+                                </ul>
+                                <div class="accordion-sub">
+                                    <button class="accordion-header w-full text-left text-sm font-bold text-teal-600 dark:text-cyan-400">
+                                        <span>เฉลยและเหตุผล:</span>
+                                        <span>&gt;</span>
+                                    </button>
+                                    <div class="nested-accordion-content p-2 bg-slate-50 dark:base-element-bg rounded-md text-xs">
+                                        <p class="font-bold text-green-600 dark:text-lime-400">คำตอบที่ถูกต้อง: 3. ฟังให้จบ, จับประเด็น, วิเคราะห์ความสมเหตุสมผล, ใช้วิจารณญาณตัดสิน</p>
+                                        <p>เหตุผล: การฟังสารโน้มน้าวใจต้องเน้นการวิเคราะห์เหตุผลและใช้ดุลยพินิจเพื่อตัดสินใจว่าควรคล้อยตามหรือไม่</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-3">
+                                <p class="font-semibold secondary-text">10. คำสั่งต่อไปนี้ ข้อความส่วนใด คือ “รายละเอียดประกอบคำสั่ง” (1) อาจารย์แจ้งให้นิสิตวิชาภาษาไทยเพื่อการสื่อสาร หมู่ 17 ทำ Mind Mapping เกี่ยวกับหนังสือที่ตนสนใจ</p>
+                                <ul class="list-disc pl-5 secondary-text text-sm space-y-1">
+                                    <li>1. ทำ Mind Mapping เกี่ยวกับหนังสือที่ตนสนใจ</li>
+                                    <li>2. นิสิตวิชาภาษาไทยเพื่อการสื่อสาร หมู่ 17</li>
+                                    <li>3. อาจารย์แจ้งให้</li>
+                                    <li>4. อาจารย์แจ้งให้ทำ Mind Mapping</li>
+                                </ul>
+                                <div class="accordion-sub">
+                                    <button class="accordion-header w-full text-left text-sm font-bold text-teal-600 dark:text-cyan-400">
+                                        <span>เฉลยและเหตุผล:</span>
+                                        <span>&gt;</span>
+                                    </button>
+                                    <div class="nested-accordion-content p-2 bg-slate-50 dark:base-element-bg rounded-md text-xs">
+                                        <p class="font-bold text-green-600 dark:text-lime-400">คำตอบที่ถูกต้อง: 2. นิสิตวิชาภาษาไทยเพื่อการสื่อสาร หมู่ 17</p>
+                                        <p>เหตุผล: "คำสั่ง" คือ (1) การทำ Mind Mapping และ "รายละเอียดประกอบคำสั่ง" คือการระบุผู้รับคำสั่งให้ชัดเจน (นิสิตหมู่ 17) และขอบเขตของสิ่งที่ทำ (เกี่ยวกับหนังสือที่ตนสนใจ)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion card-bg rounded-lg shadow-md">
+                        <button class="accordion-header w-full text-left font-bold flex justify-between items-center text-xl p-4 base-element-bg primary-text">
+                            <span>แบบฝึกหัดชุดที่ 7: เรื่อง ทักษะการอ่าน</span>
+                            <span>▼</span>
+                        </button>
+                        <div class="accordion-content p-4 space-y-4">
+                            <div class="space-y-3">
+                                <p class="font-semibold secondary-text">1. ข้อใดกล่าวถึงความหมายของการอ่านได้ถูกต้อง</p>
+                                <ul class="list-disc pl-5 secondary-text text-sm space-y-1">
+                                    <li>1. การอ่านเป็นทักษะที่จำเป็นต้องฝึกฝนตามขั้นตอนและวิธีการ</li>
+                                    <li>2. การอ่านเป็นทักษะที่มีมากับพัฒนาการตามช่วงวัยของเด็ก</li>
+                                    <li>3. การอ่านเป็นกระบวนการส่งสารเช่นเดียวกับกับการพูด</li>
+                                    <li>4. การอ่านเป็นกระบวนการรับสารที่เกิดขึ้นแรกสุดของเด็ก</li>
+                                </ul>
+                                <div class="accordion-sub">
+                                    <button class="accordion-header w-full text-left text-sm font-bold text-teal-600 dark:text-cyan-400">
+                                        <span>เฉลยและเหตุผล:</span>
+                                        <span>&gt;</span>
+                                    </button>
+                                    <div class="nested-accordion-content p-2 bg-slate-50 dark:base-element-bg rounded-md text-xs">
+                                        <p class="font-bold text-green-600 dark:text-lime-400">คำตอบที่ถูกต้อง: 1. การอ่านเป็นทักษะที่จำเป็นต้องฝึกฝนตามขั้นตอนและวิธีการ</p>
+                                        <p>เหตุผล: การอ่านที่มีประสิทธิภาพ (อ่านเป็น) ต้องอาศัยการฝึกฝนตามหลักการที่ถูกต้อง (ขั้นตอนการอ่านอย่างมีประสิทธิภาพ) ไม่ใช่แค่การรับรู้ตามธรรมชาติ</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="space-y-3">
+                                <p class="font-semibold secondary-text">2. ข้อใดกล่าวถึงประโยชน์ของการอ่านไม่ถูกต้อง</p>
+                                <ul class="list-disc pl-5 secondary-text text-sm space-y-1">
+                                    <li>1. การอ่านเป็นการฝึกสมองให้ผู้อ่านได้คิด</li>
+                                    <li>2. การอ่านทำให้ผู้อ่านมีความคิดสร้างสรรค์อย่างมีขอบเขต</li>
+                                    <li>3. การอ่านทำให้ผู้อ่านเกิดสมาธิ</li>
+                                    <li>4. การอ่านทำให้ได้แนวทางในการดำเนินชีวิต</li>
+                                </ul>
+                                <div class="accordion-sub">
+                                    <button class="accordion-header w-full text-left text-sm font-bold text-teal-600 dark:text-cyan-400">
+                                        <span>เฉลยและเหตุผล:</span>
+                                        <span>&gt;</span>
+                                    </button>
+                                    <div class="nested-accordion-content p-2 bg-slate-50 dark:base-element-bg rounded-md text-xs">
+                                        <p class="font-bold text-green-600 dark:text-lime-400">คำตอบที่ถูกต้อง: 2. การอ่านทำให้ผู้อ่านมีความคิดสร้างสรรค์อย่างมีขอบเขต</p>
+                                        <p>เหตุผล: การอ่านทำให้ผู้อ่านมีอิสระทางความคิด **อย่างไม่จำกัด** ในขณะที่สื่ออื่น ๆ (เช่น โทรทัศน์) มักจะจำกัดความคิดมากกว่า</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-3">
+                                <p class="font-semibold secondary-text">3. ข้อใดกล่าวถึงการอ่านออกเสียงได้ถูกต้องที่สุด</p>
+                                <ul class="list-disc pl-5 secondary-text text-sm space-y-1">
+                                    <li>1. การอ่านออกเสียงมีเป้าหมายเพื่อตัวผู้อ่านเป็นสำคัญ</li>
+                                    <li>2. การอ่านออกเสียงเป็นกระบวนการที่ช่วยให้ผู้อ่านเข้าถึงเนื้อหาได้รวดเร็วกว่าการอ่านในใจ</li>
+                                    <li>3. การอ่านออกเสียงต้องใช้ความสามารถในการถ่ายทอดอารมณ์ด้วยน้ำเสียงและสีหน้า ท่าทาง</li>
+                                    <li>4. การอ่านออกเสียง คือ การทำความเข้าใจกับเนื้อเรื่องและเก็บใจความสำคัญจากเรื่องที่อ่าน</li>
+                                </ul>
+                                <div class="accordion-sub">
+                                    <button class="accordion-header w-full text-left text-sm font-bold text-teal-600 dark:text-cyan-400">
+                                        <span>เฉลยและเหตุผล:</span>
+                                        <span>&gt;</span>
+                                    </button>
+                                    <div class="nested-accordion-content p-2 bg-slate-50 dark:base-element-bg rounded-md text-xs">
+                                        <p class="font-bold text-green-600 dark:text-lime-400">คำตอบที่ถูกต้อง: 3. การอ่านออกเสียงต้องใช้ความสามารถในการถ่ายทอดอารมณ์ด้วยน้ำเสียงและสีหน้า ท่าทาง</p>
+                                        <p>เหตุผล: การอ่านออกเสียงมีเป้าหมายเพื่อสื่อสารความเข้าใจและอารมณ์ไปยังผู้ฟัง (ต่างจากการอ่านในใจที่มีเป้าหมายเพื่อตนเอง)</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="space-y-3">
+                                <p class="font-semibold secondary-text">4. ลักษณะของการอ่านมีกี่ประเภท อะไรบ้าง</p>
+                                <ul class="list-disc pl-5 secondary-text text-sm space-y-1">
+                                    <li>1. มี 2 ประเภท คือ การอ่านออกเสียงและการอ่านในใจ</li>
+                                    <li>2. มี 2 ประเภท คือ การอ่านคนเดียวและการอ่านแบบกลุ่ม</li>
+                                    <li>3. มี 3 ประเภท คือ การอ่านออกเสียง การอ่านในใจ และการอ่านเพื่อการค้นคว้า</li>
+                                    <li>4. มี 4 ประเภท คือ การอ่านคนเดียว การอ่านแบบกลุ่ม การอ่านในใจ และการอ่านออกเสียง</li>
+                                </ul>
+                                <div class="accordion-sub">
+                                    <button class="accordion-header w-full text-left text-sm font-bold text-teal-600 dark:text-cyan-400">
+                                        <span>เฉลยและเหตุผล:</span>
+                                        <span>&gt;</span>
+                                    </button>
+                                    <div class="nested-accordion-content p-2 bg-slate-50 dark:base-element-bg rounded-md text-xs">
+                                        <p class="font-bold text-green-600 dark:text-lime-400">คำตอบที่ถูกต้อง: 1. มี 2 ประเภท คือ การอ่านออกเสียงและการอ่านในใจ</p>
+                                        <p>เหตุผล: ลักษณะของการอ่านตามหลักภาษาศาสตร์แบ่งเป็น 2 ลักษณะ คือ การอ่านในใจ (Silent Reading) และการอ่านออกเสียง (Oral Reading)</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="space-y-3">
+                                <p class="font-semibold secondary-text">9. เมื่อผู้อ่านได้อ่านสารประเภทบันเทิงคดีเรื่องพระอภัยมณี ผู้อ่านควรได้รับประโยชน์อะไรเป็นสำคัญจากการอ่านเรื่องนี้</p>
+                                <ul class="list-disc pl-5 secondary-text text-sm space-y-1">
+                                    <li>1. มีความสุขที่ได้อ่านเรื่องพระอภัยมณีซึ่งเป็นผลงานของผู้ประพันธ์ที่ชื่นชอบ</li>
+                                    <li>2. จินตนาการรูปลักษณ์ของตัวละครที่ผู้ประพันธ์พรรณนาไว้ได้ชัดเจน งดงาม</li>
+                                    <li>3. พิจารณาแก่นเรื่องหรือแนวคิดสำคัญที่ผู้ประพันธ์นำเสนอไว้</li>
+                                    <li>4. คาดเดาเรื่องทั้งหมดได้ถูกต้องตั้งแต่อ่านตอนต้นของเรื่องเพราะเป็นแนวเดิมของผู้ประพันธ์</li>
+                                </ul>
+                                <div class="accordion-sub">
+                                    <button class="accordion-header w-full text-left text-sm font-bold text-teal-600 dark:text-cyan-400">
+                                        <span>เฉลยและเหตุผล:</span>
+                                        <span>&gt;</span>
+                                    </button>
+                                    <div class="nested-accordion-content p-2 bg-slate-50 dark:base-element-bg rounded-md text-xs">
+                                        <p class="font-bold text-green-600 dark:text-lime-400">คำตอบที่ถูกต้อง: 3. พิจารณาแก่นเรื่องหรือแนวคิดสำคัญที่ผู้ประพันธ์นำเสนอไว้</p>
+                                        <p>เหตุผล: จุดสำคัญของการอ่านบันเทิงคดีที่มีประสิทธิภาพ (อ่านเป็น) คือการวิเคราะห์แก่นเรื่อง (Theme) หรือคติที่ผู้เขียนแฝงไว้ ไม่ใช่เพียงความเพลิดเพลินหรือจินตนาการเท่านั้น</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion card-bg rounded-lg shadow-md">
+                        <button class="accordion-header w-full text-left font-bold flex justify-between items-center text-xl p-4 base-element-bg primary-text">
+                            <span>แบบฝึกหัดชุดที่ 8: เรื่อง ทักษะการพูด</span>
+                            <span>▼</span>
+                        </button>
+                        <div class="accordion-content p-4 space-y-4">
+                            <div class="space-y-3">
+                                <p class="font-semibold secondary-text">1. ข้อใดเป็นข้อปฏิบัติที่ถูกต้องและเหมาะสมในการสนทนา</p>
+                                <ul class="list-disc pl-5 secondary-text text-sm space-y-1">
+                                    <li>1. น้ำตาลมักจะพูดสลับหัวข้อการสนทนาไปมาตลอดการสนทนา</li>
+                                    <li>2. น้ำผึ้งตอบรับการสนทนาเป็นระยะ ๆ โดยพยักหน้าขณะสนทนาทางโทรศัพท์</li>
+                                    <li>3. น้ำทิพย์เตรียมหัวข้อการสนทนามาก่อนเสมอ แม้ว่าจะเป็นการสนทนาทั่ว ๆ ไปในชีวิตประจำวัน</li>
+                                    <li>4. น้ำฝนศึกษาข้อมูลเบื้องต้น เช่น ความสามารถ หน้าที่การงาน และความสนใจของคู่สนทนาก่อนการสนทนา</li>
+                                </ul>
+                                <div class="accordion-sub">
+                                    <button class="accordion-header w-full text-left text-sm font-bold text-teal-600 dark:text-cyan-400">
+                                        <span>เฉลยและเหตุผล:</span>
+                                        <span>&gt;</span>
+                                    </button>
+                                    <div class="nested-accordion-content p-2 bg-slate-50 dark:base-element-bg rounded-md text-xs">
+                                        <p class="font-bold text-green-600 dark:text-lime-400">คำตอบที่ถูกต้อง: 4. น้ำฝนศึกษาข้อมูลเบื้องต้น เช่น ความสามารถ หน้าที่การงาน และความสนใจของคู่สนทนาก่อนการสนทนา</p>
+                                        <p>เหตุผล: การเตรียมข้อมูลคู่สนทนาก่อนการสนทนา (แม้เป็นเรื่องทั่วไป) แสดงถึงความใส่ใจและช่วยให้สนทนาได้ราบรื่น ส่วนข้อ 2 ไม่ถูกต้อง เพราะการพยักหน้าเป็นอวัจนภาษาใช้กับการสนทนาแบบเห็นหน้าเท่านั้น</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-3">
+                                <p class="font-semibold secondary-text">2. ในการพูดทางโทรศัพท์ต้องระมัดระวังเรื่องใดมากที่สุด</p>
+                                <ul class="list-disc pl-5 secondary-text text-sm space-y-1">
+                                    <li>1. น้ำเสียง</li>
+                                    <li>2. ระยะเวลาในการสนทนา</li>
+                                    <li>3. ค่าใช้จ่าย</li>
+                                    <li>4. การจดบันทึกข้อความสนทนา</li>
+                                </ul>
+                                <div class="accordion-sub">
+                                    <button class="accordion-header w-full text-left text-sm font-bold text-teal-600 dark:text-cyan-400">
+                                        <span>เฉลยและเหตุผล:</span>
+                                        <span>&gt;</span>
+                                    </button>
+                                    <div class="nested-accordion-content p-2 bg-slate-50 dark:base-element-bg rounded-md text-xs">
+                                        <p class="font-bold text-green-600 dark:text-lime-400">คำตอบที่ถูกต้อง: 1. น้ำเสียง</p>
+                                        <p>เหตุผล: เนื่องจากคู่สนทนาไม่เห็นหน้ากัน ผู้รับสารจะคาดเดาบุคลิกภาพและความรู้สึกของผู้พูดจากน้ำเสียงเป็นหลัก จึงต้องระมัดระวังน้ำเสียงให้สุภาพนุ่มนวลมากที่สุด</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-3">
+                                <p class="font-semibold secondary-text">3. บุคคลในข้อใดพูดเพื่อกิจธุระได้เหมาะสม</p>
+                                <ul class="list-disc pl-5 secondary-text text-sm space-y-1">
+                                    <li>1. สวัสดีค่ะ ขอให้สมาชิกทุกคนช่วยส่งรายงานผลการดำเนินงานของชมรมมาที่ศุภมาส...ด่วนเลยนะคะ</li>
+                                    <li>2. สวัสดีค่ะ หนู อมรา ศิลป์โกศล นิสิตในที่ปรึกษาของอาจารย์ หากหนูจะขออนุญาตเข้าไปพบเพื่อให้อาจารย์ลงนามในเอกสารช่วงเที่ยงวันนี้ ไม่ทราบว่าอาจารย์สะดวกไหมคะ ขอบคุณค่ะ</li>
+                                    <li>3. สวัสดีครับ ผม ศักดา วิทยายุทธ เลขานุการชมรมภาษาไทย อยากให้เพื่อนๆ ช่วยกันบริจาคเงินคนละ 100 บาท เพื่อสมทบทุนจัดกิจกรรมไหว้ครู</li>
+                                    <li>4. สวัสดีครับ (ยกมือไหว้) คุณกฤษดา ศิรามพุช ผมมาพบท่านตามที่ได้นัดหมายไว้เมื่อวันจันทร์ที่ผ่านมา ไม่ทราบว่าตอนนี้ท่านสะดวกพูดคุยไหมครับ</li>
+                                </ul>
+                                <div class="accordion-sub">
+                                    <button class="accordion-header w-full text-left text-sm font-bold text-teal-600 dark:text-cyan-400">
+                                        <span>เฉลยและเหตุผล:</span>
+                                        <span>&gt;</span>
+                                    </button>
+                                    <div class="nested-accordion-content p-2 bg-slate-50 dark:base-element-bg rounded-md text-xs">
+                                        <p class="font-bold text-green-600 dark:text-lime-400">คำตอบที่ถูกต้อง: 2. สวัสดีค่ะ หนู อมรา ศิลป์โกศล นิสิตในที่ปรึกษาของอาจารย์ หากหนูจะขออนุญาตเข้าไปพบเพื่อให้อาจารย์ลงนามในเอกสารช่วงเที่ยงวันนี้ ไม่ทราบว่าอาจารย์สะดวกไหมคะ ขอบคุณค่ะ</p>
+                                        <p>เหตุผล: ข้อ 2 มีการแนะนำตัว/ระบุสถานภาพ, แจ้งวัตถุประสงค์ และ **สอบถามความสะดวก** ของผู้อาวุโส (อาจารย์) ซึ่งเป็นหลักการพูดเพื่อกิจธุระที่ต้องคำนึงถึงความสะดวกของผู้ติดต่อด้วย</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-3">
+                                <p class="font-semibold secondary-text">9. ข้อใดจับคู่สถานการณ์กับประเภทของการพูดเสนอผลงานทางวิชาการไม่ถูกต้อง</p>
+                                <ul class="list-disc pl-5 secondary-text text-sm space-y-1">
+                                    <li>1. ผู้อำนวยการกรมเจ้าท่ารายงานถึงมาตรการป้องกันน้ำท่วมในจังหวัดอยุธยา : การเสนองานวิชาการ</li>
+                                    <li>2. นักวิจัยรายงานผลการวิจัยระยะที่สอง โดยกล่าวถึงผลการทดลองที่ผ่านมา : การเสนองานวิชาการ</li>
+                                    <li>3. นิสิตระดับปริญญาเอกอธิบายวิธีการเก็บข้อมูลให้อาจารย์ที่ปรึกษาวิทยานิพนธ์ : การเสนอความก้าวหน้า</li>
+                                    <li>4. อธิการบดี ม.เกษตรฯ นำเสนอผลการศึกษาความเชื่อเรื่องผีและวิญญาณแก่คณะกรรมการสภาวิจัย : การเสนองานวิชาการ</li>
+                                </ul>
+                                <div class="accordion-sub">
+                                    <button class="accordion-header w-full text-left text-sm font-bold text-teal-600 dark:text-cyan-400">
+                                        <span>เฉลยและเหตุผล:</span>
+                                        <span>&gt;</span>
+                                    </button>
+                                    <div class="nested-accordion-content p-2 bg-slate-50 dark:base-element-bg rounded-md text-xs">
+                                        <p class="font-bold text-green-600 dark:text-lime-400">คำตอบที่ถูกต้อง: 2. นักวิจัยรายงานผลการวิจัยระยะที่สอง โดยกล่าวถึงผลการทดลองที่ผ่านมา : การเสนองานวิชาการ</p>
+                                        <p>เหตุผล: การรายงานผลการวิจัยที่อยู่ระหว่างการดำเนินงาน (ระยะที่สอง) จัดเป็น **การรายงานความก้าวหน้า (Progress Report)** ไม่ใช่การเสนองานวิชาการ (Presentation of Completed Work)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion card-bg rounded-lg shadow-md">
+                        <button class="accordion-header w-full text-left font-bold flex justify-between items-center text-xl p-4 base-element-bg primary-text">
+                            <span>แบบฝึกหัดชุดที่ 9: เรื่อง ทักษะการเขียน (ประจำวัน-กิจธุระ-งานสังคม)</span>
+                            <span>▼</span>
+                        </button>
+                        <div class="accordion-content p-4 space-y-4">
+                            <div class="space-y-3">
+                                <p class="font-semibold secondary-text">1. การเขียนจดหมายขนาดสั้นต่อไปนี้ ข้อใดระบุลักษณะการเขียนที่ไม่เหมาะสมได้ถูกต้อง</p>
+                                <p class="secondary-text text-sm italic border-l-4 p-2 highlight-bg">เรียน อาจารย์ ดร.สุรีย์รัตน์ บำรุงสุข<br>ผมมารอพบอาจารย์เพื่อขอคำปรึกษาเรื่องงานกลุ่มแต่เมื่อผมได้เห็นท้องฟ้าด้านนอกของอาคารเรียนเริ่มมืดครึ้ม หม่นหมองเหมือนสถานะหัวใจของผมตอนนี้ ผมไม่สามารถอยู่รออาจารย์ต่อไปได้ เนื่องจากผมต้องการที่พึ่งทางใจ จึงขออนุญาตฝากข้อความถึงอาจารย์ กรุณาติดต่อกลับเพื่อนัดหมายที่เบอร์โทร 062-2222222 ด้วยครับ ขอบคุณครับ<br>ทวีทรัพย์ ทวีโชค<br>นิสิตวิชาภาษาไทยเพื่อการสื่อสาร หมู่เรียน 999<br>29 ตุลาคม 2565</p>
+                                <ul class="list-disc pl-5 secondary-text text-sm space-y-1">
+                                    <li>1. ไม่ระบุรหัสวิชาคือ 01999021</li>
+                                    <li>2. ข้อความที่เขียนไม่ชัดเจนตรงประเด็น</li>
+                                    <li>3. เนื้อความมีลักษณะเป็นการสั่งให้อาจารย์ติดต่อกลับ</li>
+                                    <li>4. ใช้ถ้อยคำภาษาที่สุภาพเกินจริง</li>
+                                </ul>
+                                <div class="accordion-sub">
+                                    <button class="accordion-header w-full text-left text-sm font-bold text-teal-600 dark:text-cyan-400">
+                                        <span>เฉลยและเหตุผล:</span>
+                                        <span>&gt;</span>
+                                    </button>
+                                    <div class="nested-accordion-content p-2 bg-slate-50 dark:base-element-bg rounded-md text-xs">
+                                        <p class="font-bold text-green-600 dark:text-lime-400">คำตอบที่ถูกต้อง: 3. เนื้อความมีลักษณะเป็นการสั่งให้อาจารย์ติดต่อกลับ</p>
+                                        <p>เหตุผล: การใช้คำว่า "กรุณาติดต่อกลับ...ด้วยครับ" เป็นการสั่งให้ผู้อาวุโส (อาจารย์) ปฏิบัติ ซึ่งไม่เหมาะสมกับความสัมพันธ์และวัตถุประสงค์ของการฝากข้อความ</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="space-y-3">
+                                <p class="font-semibold secondary-text">7. ข้อใดกล่าวถึงจดหมายสมัครงานแบบรวมประวัติไม่ถูกต้อง</p>
+                                <ul class="list-disc pl-5 secondary-text text-sm space-y-1">
+                                    <li>1. จดหมายสมัครงานแบบรวมประวัติจะใช้เมื่อผู้สมัครมีประสบการณ์น้อยมาก</li>
+                                    <li>2. เหมาะสำหรับผู้ที่เพิ่งสำเร็จการศึกษา</li>
+                                    <li>3. จดหมายสมัครงานแบบรวมประวัติจะกล่าวถึงความต้องการที่จะมีโอกาสเข้าพบท่านตามวันและเวลาที่ดิฉันสะดวก</li>
+                                    <li>4. ดิฉันสามารถใช้โปรแกรม Microsoft Office ได้ในระดับดีพอประมาณ</li>
+                                </ul>
+                                <div class="accordion-sub">
+                                    <button class="accordion-header w-full text-left text-sm font-bold text-teal-600 dark:text-cyan-400">
+                                        <span>เฉลยและเหตุผล:</span>
+                                        <span>&gt;</span>
+                                    </button>
+                                    <div class="nested-accordion-content p-2 bg-slate-50 dark:base-element-bg rounded-md text-xs">
+                                        <p class="font-bold text-green-600 dark:text-lime-400">คำตอบที่ถูกต้อง: 3. จดหมายสมัครงานแบบรวมประวัติจะกล่าวถึงความต้องการที่จะมีโอกาสเข้าพบท่านตามวันและเวลาที่ดิฉันสะดวก</p>
+                                        <p>เหตุผล: การนัดสัมภาษณ์ควรระบุว่า "ดิฉันพร้อมให้ท่านนัดสัมภาษณ์" หรือ "กรุณาติดต่อดิฉันเพื่อกำหนดวันเวลาที่ท่านสะดวก" ไม่ใช่การกำหนดวันเวลาที่ผู้สมัครสะดวกเอง</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-3">
+                                <p class="font-semibold secondary-text">8. จากข้อมูลต่อไปนี้ หากณัฐชาต้องการไปสมัครงานในพ.ศ. 2567 ควรเขียนจดหมายสมัครงานแบบใด<br><br><span class="italic font-normal">“ณัฐชาเป็นนิสิตคณะอุตสาหกรรมเกษตร มีผลการเรียนดีทุกภาคการศึกษาจนได้รับพระราชทานทุนเรียนดี ระหว่างเรียนได้ไปฝึกงานที่บริษัทผลิตอาหารแปรรูปแห่งหนึ่งเป็นเวลา 2 เดือน และสำเร็จการศึกษาด้วยปริญญาเกียรตินิยมอันดับ 1 เมื่อพ.ศ. 2566”</span></p>
+                                <ul class="list-disc pl-5 secondary-text text-sm space-y-1">
+                                    <li>1. จดหมายสมัครงานแบบแยกประวัติส่วนตัวเพราะณัฐชามีประสบการณ์ฝึกงาน 2 เดือน</li>
+                                    <li>2. จดหมายสมัครงานแบบแยกประวัติส่วนตัวเพราะณัฐชาควรชี้ให้นายจ้างเห็นผลการเรียนของตน</li>
+                                    <li>3. จดหมายสมัครงานแบบรวมประวัติส่วนตัวเพราะณัฐชายังไม่ได้มีประสบการณ์มากนัก</li>
+                                    <li>4. จดหมายสมัครงานแบบรวมประวัติส่วนตัวเพราะณัฐชาจะได้สื่อความได้กระชับ ครบถ้วน</li>
+                                </ul>
+                                <div class="accordion-sub">
+                                    <button class="accordion-header w-full text-left text-sm font-bold text-teal-600 dark:text-cyan-400">
+                                        <span>เฉลยและเหตุผล:</span>
+                                        <span>&gt;</span>
+                                    </button>
+                                    <div class="nested-accordion-content p-2 bg-slate-50 dark:base-element-bg rounded-md text-xs">
+                                        <p class="font-bold text-green-600 dark:text-lime-400">คำตอบที่ถูกต้อง: 3. จดหมายสมัครงานแบบรวมประวัติส่วนตัวเพราะณัฐชายังไม่ได้มีประสบการณ์มากนัก</p>
+                                        <p>เหตุผล: ผู้ที่เพิ่งสำเร็จการศึกษาและมีประสบการณ์การทำงาน/ฝึกงานเพียงเล็กน้อย (2 เดือน) ควรใช้จดหมายสมัครงานแบบ **รวมประวัติ** ซึ่งเน้นข้อมูลการศึกษาและคุณสมบัติทั้งหมดไว้ในเนื้อหาจดหมายเดียว</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion card-bg rounded-lg shadow-md">
+                        <button class="accordion-header w-full text-left font-bold flex justify-between items-center text-xl p-4 base-element-bg primary-text">
+                            <span>แบบฝึกหัดชุดที่ 10: เรื่อง การเขียนรายงานทางวิชาการ</span>
+                            <span>▼</span>
+                        </button>
+                        <div class="accordion-content p-4 space-y-4">
+                            <div class="space-y-3">
+                                <p class="font-semibold secondary-text">1. ข้อใดไม่ใช่ประโยชน์สำคัญของการเขียนรายงานทางวิชาการ</p>
+                                <ul class="list-disc pl-5 secondary-text text-sm space-y-1">
+                                    <li>1. ให้นิสิตมีความรัก ความสามัคคี ในการทำงานกลุ่มร่วมกัน</li>
+                                    <li>2. ให้นิสิตได้ฝึกการค้นคว้าข้อมูลจากแหล่งอื่นนอกเหนือจากหนังสือเรียน</li>
+                                    <li>3. ให้นิสิตมีองค์ความรู้ที่กว้างขึ้นจากการเรียนในชั้นเรียน</li>
+                                    <li>4. ให้นิสิตมีโอกาสศึกษาอย่างเจาะลึกในประเด็นที่สนใจ</li>
+                                </ul>
+                                <div class="accordion-sub">
+                                    <button class="accordion-header w-full text-left text-sm font-bold text-teal-600 dark:text-cyan-400">
+                                        <span>เฉลยและเหตุผล:</span>
+                                        <span>&gt;</span>
+                                    </button>
+                                    <div class="nested-accordion-content p-2 bg-slate-50 dark:base-element-bg rounded-md text-xs">
+                                        <p class="font-bold text-green-600 dark:text-lime-400">คำตอบที่ถูกต้อง: 1. ให้นิสิตมีความรัก ความสามัคคี ในการทำงานกลุ่มร่วมกัน</p>
+                                        <p>เหตุผล: ประโยชน์หลักของการเขียนรายงานทางวิชาการเน้นที่ทักษะทางวิชาการ (ค้นคว้า, องค์ความรู้, ศึกษาเจาะลึก) ไม่ใช่ด้านความสัมพันธ์ส่วนตัว (ความสามัคคี) โดยตรง</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="space-y-3">
+                                <p class="font-semibold secondary-text">4. ข้อใดกล่าวไม่ถูกต้องเกี่ยวกับส่วนเนื้อหาสาระและส่วนสรุป</p>
+                                <ul class="list-disc pl-5 secondary-text text-sm space-y-1">
+                                    <li>1. ส่วนสรุป ถือเป็นส่วนที่สำคัญที่สุดของรายงาน เพราะเป็นการสรุปและอภิปราย</li>
+                                    <li>2. ส่วนสรุป เป็นส่วนท้ายของเนื้อความ</li>
+                                    <li>3. ส่วนเนื้อหาสาระเป็นส่วนที่ประกอบไปด้วยบทนำและเนื้อหา</li>
+                                    <li>4. ส่วนเนื้อหาสาระ ถือเป็นส่วนสำคัญที่สุดของรายงานทั้งหมด</li>
+                                </ul>
+                                <div class="accordion-sub">
+                                    <button class="accordion-header w-full text-left text-sm font-bold text-teal-600 dark:text-cyan-400">
+                                        <span>เฉลยและเหตุผล:</span>
+                                        <span>&gt;</span>
+                                    </button>
+                                    <div class="nested-accordion-content p-2 bg-slate-50 dark:base-element-bg rounded-md text-xs">
+                                        <p class="font-bold text-green-600 dark:text-lime-400">คำตอบที่ถูกต้อง: 1. ส่วนสรุป ถือเป็นส่วนที่สำคัญที่สุดของรายงาน เพราะเป็นการสรุปและอภิปราย</p>
+                                        <p>เหตุผล: **ส่วนเนื้อความ (ส่วนที่ 6)** เป็นส่วนที่สำคัญที่สุดของรายงานทางวิชาการ (ตามที่ระบุในเอกสาร) ไม่ใช่ส่วนสรุป</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-3">
+                                <p class="font-semibold secondary-text">6. ข้อใดกล่าวถูกต้องที่สุดเกี่ยวกับขั้นตอนการเขียนรายงานทางวิชาการ</p>
+                                <ul class="list-disc pl-5 secondary-text text-sm space-y-1">
+                                    <li>1. การตั้งชื่อเรื่องที่ดีต้องกระชับ มีความกะทัดรัดและครอบคลุมขอบเขตของเรื่อง</li>
+                                    <li>2. การอ่านเอกสารเพื่อการค้นคว้าจะทำให้ผู้เขียนรายงานเข้าใจและมีความรู้ในเรื่องนั้น ๆ ก่อนทำโครงเรื่อง</li>
+                                    <li>3. การกำหนดจุดมุ่งหมายและขอบเขตของเรื่องต้องกำหนดให้เหมาะสมกับระยะเวลาที่ใช้ศึกษาค้นคว้า</li>
+                                    <li>4. เมื่อผู้เขียนรวบรวมข้อมูล ควรบันทึกแหล่งข้อมูลโดยละเอียด เพื่อนำไปเขียนบรรณานุกรม</li>
+                                </ul>
+                                <div class="accordion-sub">
+                                    <button class="accordion-header w-full text-left text-sm font-bold text-teal-600 dark:text-cyan-400">
+                                        <span>เฉลยและเหตุผล:</span>
+                                        <span>&gt;</span>
+                                    </button>
+                                    <div class="nested-accordion-content p-2 bg-slate-50 dark:base-element-bg rounded-md text-xs">
+                                        <p class="font-bold text-green-600 dark:text-lime-400">คำตอบที่ถูกต้อง: 3. การกำหนดจุดมุ่งหมายและขอบเขตของเรื่องต้องกำหนดให้เหมาะสมกับระยะเวลาที่ใช้ศึกษาค้นคว้า</p>
+                                        <p>เหตุผล: การกำหนดขอบเขตของงานวิชาการต้องสัมพันธ์กับเวลาที่จำกัด เพื่อให้สามารถศึกษาเนื้อหาได้อย่างลึกซึ้งและเสร็จสมบูรณ์</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-3">
+                                <p class="font-semibold secondary-text">7. ข้อใดกล่าวถูกต้องที่สุดเกี่ยวกับการเลือกเรื่องเพื่อทำรายงานทางวิชาการ</p>
+                                <ul class="list-disc pl-5 secondary-text text-sm space-y-1">
+                                    <li>1. การทำรายงานทางวิชาการควรเลือกเรื่องที่ตนเองสนใจมากที่สุด</li>
+                                    <li>2. การทำรายงานทางวิชาการควรเลือกเรื่องที่เป็นการส่งเสริมความรู้และเป็นประโยชน์</li>
+                                    <li>3. การทำรายงานทางวิชาการควรเลือกเรื่องที่คนในสังคมให้ความสนใจ</li>
+                                    <li>4. การทำรายงานทางวิชาการควรเลือกเรื่องที่ง่ายต่อการทำและค้นคว้าข้อมูล</li>
+                                </ul>
+                                <div class="accordion-sub">
+                                    <button class="accordion-header w-full text-left text-sm font-bold text-teal-600 dark:text-cyan-400">
+                                        <span>เฉลยและเหตุผล:</span>
+                                        <span>&gt;</span>
+                                    </button>
+                                    <div class="nested-accordion-content p-2 bg-slate-50 dark:base-element-bg rounded-md text-xs">
+                                        <p class="font-bold text-green-600 dark:text-lime-400">คำตอบที่ถูกต้อง: 2. การทำรายงานทางวิชาการควรเลือกเรื่องที่เป็นการส่งเสริมความรู้และเป็นประโยชน์</p>
+                                        <p>เหตุผล: เกณฑ์การเลือกเรื่องที่ดีคือ สัมพันธ์กับรายวิชา, **เกิดประโยชน์** และมีแหล่งข้อมูลให้ค้นคว้า (เน้นด้านวิชาการและประโยชน์)</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-3">
+                                <p class="font-semibold secondary-text">8. เมื่อทำโครงเรื่องของรายงานทางวิชาการเรียบร้อยแล้ว สิ่งที่จะต้องทำต่อไปคือข้อใด</p>
+                                <ul class="list-disc pl-5 secondary-text text-sm space-y-1">
+                                    <li>1. การเขียนเนื้อหา</li>
+                                    <li>2. การเขียนเชิงอรรถ</li>
+                                    <li>3. การรวบรวมข้อมูล</li>
+                                    <li>4. การรวบรวมบรรณานุกรม</li>
+                                </ul>
+                                <div class="accordion-sub">
+                                    <button class="accordion-header w-full text-left text-sm font-bold text-teal-600 dark:text-cyan-400">
+                                        <span>เฉลยและเหตุผล:</span>
+                                        <span>&gt;</span>
+                                    </button>
+                                    <div class="nested-accordion-content p-2 bg-slate-50 dark:base-element-bg rounded-md text-xs">
+                                        <p class="font-bold text-green-600 dark:text-lime-400">คำตอบที่ถูกต้อง: 3. การรวบรวมข้อมูล</p>
+                                        <p>เหตุผล: ขั้นตอนการเขียนรายงานคือ 1. เลือกเรื่อง 2. กำหนดขอบเขต 3. ตั้งชื่อ 4. อ่านเอกสาร 5. ทำโครงเรื่อง เมื่อได้โครงเรื่องแล้ว ขั้นต่อไปคือ **รวบรวมข้อมูล** ตามโครงเรื่องที่วางไว้ (ทำบัตรบันทึกย่อ) ก่อนนำไปสู่การเขียนเนื้อหา</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </section>
         </main>
@@ -475,7 +969,7 @@
             const accordions = document.querySelectorAll('.accordion-header');
             const resumeSections = document.querySelectorAll('.resume-section');
             const resumeDetailsContainer = document.getElementById('resume-details');
-            const initialDetailsPlaceholder = resumeDetailsContainer ? resumeDetailsContainer.innerHTML : '<p class="secondary-text italic">เลือกหัวข้อจากประวัติย่อ (ด้านขวามือ) เพื่อดูคำแนะนำ...</p>';
+            const initialDetailsPlaceholder = resumeDetailsContainer ? resumeDetailsContainer.innerHTML : '<p class="secondary-text italic">เลือกหัวข้อจากประวัติย่อ (ด้านบน) เพื่อดูคำแนะนำ...</p>';
             
             // Set CSS Variable for nested accordion border color based on theme
             function setNestedAccordionBorderColor(isDark) {
@@ -601,11 +1095,29 @@
                         const parentAccordionContent = header.closest('.accordion-content');
                         
                         // Close all other accordions in the immediate active content section (only top level)
+                        // This logic is modified to handle the new quiz structure which doesn't sit in an outer 'card-bg' wrapper 
                         if (!isNested) {
-                            document.querySelectorAll('.content-section.active > .card-bg .accordion-content:not(.nested-accordion-content)').forEach(otherContent => {
+                            // Find all relevant sibling content wrappers (quizzes or main sections)
+                             let siblingContents = [];
+                             // Check for main accordion in main sections
+                             if(header.closest('.content-section.active')) {
+                                siblingContents = header.closest('.content-section.active').querySelectorAll('.accordion-content:not(.nested-accordion-content)');
+                            }
+                             // Check for main accordion in exercise list (quizzes)
+                            if (header.closest('#exercise-list')) {
+                                siblingContents = header.closest('#exercise-list').querySelectorAll('.accordion-content:not(.nested-accordion-content)');
+                            }
+                            
+                            siblingContents.forEach(otherContent => {
                                 if (otherContent !== content) {
                                     otherContent.style.maxHeight = null;
-                                    otherContent.previousElementSibling.querySelector('span:last-child').textContent = '▼';
+                                    const siblingHeader = otherContent.previousElementSibling;
+                                    if(siblingHeader) {
+                                        const icon = siblingHeader.querySelector('span:last-child');
+                                        if (icon && icon.textContent !== '▼') { // Avoid changing nested icon default state
+                                            icon.textContent = '▼';
+                                        }
+                                    }
                                 }
                             });
                         }
@@ -628,9 +1140,12 @@
                         content.style.maxHeight = content.scrollHeight + 100 + "px"; // Use slightly larger scrollHeight for smooth transition
 
                         // Re-adjust parent height if nested (simplifying the approach)
-                        if (isNested && parentAccordionContent) { // Check for null here
+                        if (isNested && parentAccordionContent) { 
                             // Simply set a large height to ensure the newly expanded content is visible without complex calculation
                             parentAccordionContent.style.maxHeight = '2000px'; 
+                            icon.textContent = '▼';
+                        } else if(icon) {
+                            icon.textContent = '▲';
                         }
                     }
                 });
